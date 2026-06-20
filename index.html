@@ -729,5 +729,24 @@
   }
 </style>
 
+
+</style>
+
+<script>
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    window.parent.postMessage({ type: 'iframeHeight', height: height }, '*');
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 500);
+  setTimeout(sendHeight, 1500);
+</script>
+
 </body>
 </html>
