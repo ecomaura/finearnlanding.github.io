@@ -731,43 +731,7 @@
   </div>
 </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  if (window.location.pathname.indexOf('finearnlanding') === -1) return;
 
-  var iframeDiv = document.createElement('div');
-  iframeDiv.style.cssText = 'width:100%; line-height:0; font-size:0; display:block; overflow:hidden;';
-
-  var iframe = document.createElement('iframe');
-  iframe.src = 'https://ecomaura.github.io/finearnlanding.github.io/';
-  iframe.width = '100%';
-  iframe.frameBorder = '0';
-  iframe.scrolling = 'no';
-  iframe.style.cssText = 'display:block; width:100%; border:none; overflow:hidden;';
-
-  function setHeight() {
-    var w = window.innerWidth;
-    if (w <= 480)       iframe.style.height = '1800px';
-    else if (w <= 780)  iframe.style.height = '1600px';
-    else if (w <= 1024) iframe.style.height = '1350px';
-    else                iframe.style.height = '1300px';
-  }
-
-  setHeight();
-  iframeDiv.appendChild(iframe);
-
-  var target = document.getElementById('template-container');
-  if (target) target.appendChild(iframeDiv);
-
-  var oldHero = document.getElementById('hero-section-new');
-  if (oldHero) oldHero.style.display = 'none';
-
-  window.addEventListener('resize', function() {
-    clearTimeout(window._iframeResizeTimer);
-    window._iframeResizeTimer = setTimeout(setHeight, 300);
-  });
-});
-</script>
 
 </body>
 </html>
