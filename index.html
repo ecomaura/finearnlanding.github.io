@@ -728,34 +728,90 @@
 </section>
 
 <script>
-  var lastHeight = 0;
-  
+  // ── Typing animation ──
+  (function() {
+    var phrases = ["Invest Tomorrow", "Trade with Confidence", "Invest like a Pro"];
+    var target  = document.getElementById("typing-target");
+    var cursor  = document.getElementById("cursor");
+    if (!target || !cursor) return;
+
+    var phraseIdx = 0;
+    var charIdx   = 0;
+    var deleting  = false;
+    var started   = false;
+
+    function type() {
+      var current = phrases[phraseIdx];
+      if (!deleting) {
+        target.textContent = current.slice(0, ++charIdx);
+        if (charIdx === current.length) {
+          if (phraseIdx === 0 && !started) {
+            started = true;
+            setTimeout(function() {
+              cursor.classList.add("done");
+              setTimeout(startCycle, 600);
+            }, 2200);
+            return;
+          }
+          deleting = true;
+          setTimeout(type, 1800);
+          return;
+        }
+      } else {
+        target.textContent = current.slice(0, --charIdx);
+        if (charIdx === 0) {
+          deleting  = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          setTimeout(type, 350);
+          return;
+        }
+      }
+      setTimeout(type, deleting ? 55 : 72);
+    }
+
+    function startCycle() {
+      cursor.classList.remove("done");
+      cursor.style.opacity = "1";
+      cursor.style.animation = "blink 0.75s step-end infinite";
+      deleting = true;
+      type();
+    }
+
+    setTimeout(type, 1050);
+  })();
+
+  // ── Send height to parent ──
+  var heightSent = false;
+
   function sendHeight() {
-    var height = Math.max(
+    if (heightSent) return;
+    var h = Math.max(
       document.body.scrollHeight,
       document.body.offsetHeight,
       document.documentElement.scrollHeight,
       document.documentElement.offsetHeight
     );
-    // Only send if height actually changed by more than 5px
-    if (Math.abs(height - lastHeight) > 5) {
-      lastHeight = height;
-      window.parent.postMessage({ type: 'iframeHeight', height: height }, '*');
+    if (h > 200) {
+      window.parent.postMessage({ type: 'iframeHeight', height: h }, '*');
+      heightSent = true;
     }
   }
 
   window.addEventListener('load', function() {
-    sendHeight();
-    setTimeout(sendHeight, 1000);
-    setTimeout(sendHeight, 2500);
+    setTimeout(sendHeight, 500);
+    setTimeout(sendHeight, 1500);
+    setTimeout(sendHeight, 3000);
   });
 
-  // Debounce resize so rapid firing doesn't loop
-  var resizeTimer;
   window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(sendHeight, 300);
+    heightSent = false;
+    setTimeout(sendHeight, 300);
   });
+
+  // Safety: fire immediately if page already loaded
+  if (document.readyState === 'complete') {
+    setTimeout(sendHeight, 500);
+  }
 </script>
 
 </body>
