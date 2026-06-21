@@ -781,19 +781,19 @@
   })();
 
   // ── Send height to parent ──
-  var heightSent = false;
+  var lastSentHeight = 0;
 
   function sendHeight() {
-    if (heightSent) return;
     var h = Math.max(
       document.body.scrollHeight,
       document.body.offsetHeight,
       document.documentElement.scrollHeight,
       document.documentElement.offsetHeight
     );
-    if (h > 200) {
+    // Only send if height changed by more than 10px
+    if (Math.abs(h - lastSentHeight) > 10) {
+      lastSentHeight = h;
       window.parent.postMessage({ type: 'iframeHeight', height: h }, '*');
-      heightSent = true;
     }
   }
 
@@ -803,9 +803,11 @@
     setTimeout(sendHeight, 3000);
   });
 
+  // Debounced resize only
+  var resizeTimer;
   window.addEventListener('resize', function() {
-    heightSent = false;
-    setTimeout(sendHeight, 300);
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(sendHeight, 400);
   });
 
   // Safety: fire immediately if page already loaded
