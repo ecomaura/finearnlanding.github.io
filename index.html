@@ -502,7 +502,7 @@
   <!-- LEFT -->
   <div class="hero-left">
     <h1>
-      Master The
+      Masters The
       <span class="accent">Share Market</span>
       Invest In Your Future
     </h1>
@@ -745,13 +745,12 @@ document.addEventListener('DOMContentLoaded', function() {
   iframe.scrolling = 'no';
   iframe.style.cssText = 'display:block; width:100%; border:none; overflow:hidden;';
 
-  // Fixed heights per breakpoint — no dynamic resizing at all
   function setHeight() {
     var w = window.innerWidth;
-    if (w <= 480)       iframe.style.height = '1400px';
-    else if (w <= 780)  iframe.style.height = '1200px';
-    else if (w <= 1024) iframe.style.height = '780px';
-    else                iframe.style.height = '720px';
+    if (w <= 480)       iframe.style.height = '1800px';
+    else if (w <= 780)  iframe.style.height = '1600px';
+    else if (w <= 1024) iframe.style.height = '1100px';
+    else                iframe.style.height = '980px';
   }
 
   setHeight();
@@ -763,7 +762,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var oldHero = document.getElementById('hero-section-new');
   if (oldHero) oldHero.style.display = 'none';
 
-  // Only resize on actual window resize, no postMessage
   window.addEventListener('resize', function() {
     clearTimeout(window._iframeResizeTimer);
     window._iframeResizeTimer = setTimeout(setHeight, 300);
