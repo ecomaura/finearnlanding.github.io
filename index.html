@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boss of Stock – Master The Share Market</title>
+  <title>Boss of Stock – Masters The Share Market</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -732,92 +732,43 @@
 </section>
 
 <script>
-  // ── Typing animation ──
-  (function() {
-    var phrases = ["Invest Tomorrow", "Trade with Confidence", "Invest like a Pro"];
-    var target  = document.getElementById("typing-target");
-    var cursor  = document.getElementById("cursor");
-    if (!target || !cursor) return;
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.pathname.indexOf('finearnlanding') === -1) return;
 
-    var phraseIdx = 0;
-    var charIdx   = 0;
-    var deleting  = false;
-    var started   = false;
+  var iframeDiv = document.createElement('div');
+  iframeDiv.style.cssText = 'width:100%; line-height:0; font-size:0; display:block; overflow:hidden;';
 
-    function type() {
-      var current = phrases[phraseIdx];
-      if (!deleting) {
-        target.textContent = current.slice(0, ++charIdx);
-        if (charIdx === current.length) {
-          if (phraseIdx === 0 && !started) {
-            started = true;
-            setTimeout(function() {
-              cursor.classList.add("done");
-              setTimeout(startCycle, 600);
-            }, 2200);
-            return;
-          }
-          deleting = true;
-          setTimeout(type, 1800);
-          return;
-        }
-      } else {
-        target.textContent = current.slice(0, --charIdx);
-        if (charIdx === 0) {
-          deleting  = false;
-          phraseIdx = (phraseIdx + 1) % phrases.length;
-          setTimeout(type, 350);
-          return;
-        }
-      }
-      setTimeout(type, deleting ? 55 : 72);
-    }
+  var iframe = document.createElement('iframe');
+  iframe.src = 'https://ecomaura.github.io/finearnlanding.github.io/';
+  iframe.width = '100%';
+  iframe.frameBorder = '0';
+  iframe.scrolling = 'no';
+  iframe.style.cssText = 'display:block; width:100%; border:none; overflow:hidden;';
 
-    function startCycle() {
-      cursor.classList.remove("done");
-      cursor.style.opacity = "1";
-      cursor.style.animation = "blink 0.75s step-end infinite";
-      deleting = true;
-      type();
-    }
-
-    setTimeout(type, 1050);
-  })();
-
-  // ── Send height to parent ──
-  var lastSentHeight = 0;
-
-  function sendHeight() {
-    var h = Math.max(
-      document.body.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.scrollHeight,
-      document.documentElement.offsetHeight
-    );
-    // Only send if height changed by more than 10px
-    if (Math.abs(h - lastSentHeight) > 10) {
-      lastSentHeight = h;
-      window.parent.postMessage({ type: 'iframeHeight', height: h }, '*');
-    }
+  // Fixed heights per breakpoint — no dynamic resizing at all
+  function setHeight() {
+    var w = window.innerWidth;
+    if (w <= 480)       iframe.style.height = '1400px';
+    else if (w <= 780)  iframe.style.height = '1200px';
+    else if (w <= 1024) iframe.style.height = '780px';
+    else                iframe.style.height = '720px';
   }
 
-  window.addEventListener('load', function() {
-    setTimeout(sendHeight, 500);
-    setTimeout(sendHeight, 1500);
-    setTimeout(sendHeight, 3000);
-  });
+  setHeight();
+  iframeDiv.appendChild(iframe);
 
-  // Debounced resize only
-  var resizeTimer;
+  var target = document.getElementById('template-container');
+  if (target) target.appendChild(iframeDiv);
+
+  var oldHero = document.getElementById('hero-section-new');
+  if (oldHero) oldHero.style.display = 'none';
+
+  // Only resize on actual window resize, no postMessage
   window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(sendHeight, 400);
+    clearTimeout(window._iframeResizeTimer);
+    window._iframeResizeTimer = setTimeout(setHeight, 300);
   });
-
-  // Safety: fire immediately if page already loaded
-  if (document.readyState === 'complete') {
-    setTimeout(sendHeight, 500);
-  }
+});
 </script>
 
 </body>
