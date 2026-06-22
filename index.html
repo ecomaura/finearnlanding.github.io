@@ -26,8 +26,8 @@
     .bos-hero-right {
       width: 100%;
       position: relative;
-      height: 70vh;
-      min-height: 400px;
+      height: 90vh;
+      min-height: 520px;
       overflow: hidden;
     }
 
@@ -73,8 +73,8 @@
     }
     .bos-card-live .bos-yt-icon svg { width: 18px; height: 18px; }
 
-    /* Social Media combined card — bottom left */
-    .bos-card-social { bottom: 16%; left: 16px; }
+    /* Social Media combined card — top left */
+    .bos-card-social { top: 14%; left: 16px; }
     .bos-card-social .bos-social-icon {
       width: 36px; height: 36px;
       background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
@@ -99,6 +99,10 @@
       background: #F9F7FF;
       padding: 40px max(24px, 5vw) 48px;
       z-index: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .bos-h1 {
@@ -122,6 +126,7 @@
       max-width: 560px;
       margin-bottom: 28px;
       font-family: 'Inter', sans-serif;
+      text-align: center;
     }
 
     /* feature pills */
@@ -130,6 +135,7 @@
       flex-wrap: wrap;
       gap: 12px 20px;
       font-family: 'Inter', sans-serif;
+      justify-content: center;
     }
 
     .bos-feature-item {
@@ -248,13 +254,12 @@
 
     /* ── MOBILE ── */
     @media (max-width: 600px) {
-      .bos-hero-right { height: 55vw; min-height: 280px; }
+      .bos-hero-right { height: 75vw; min-height: 320px; }
       .bos-card { padding: 7px 10px; gap: 7px; }
       .bos-card-text-title { font-size: 11px; }
       .bos-card-big-num { font-size: 15px; }
       .bos-card-text-sub { font-size: 10px; }
-      .bos-card-live { top: 10%; left: 8px; }
-      .bos-card-social { bottom: 10%; left: 8px; }
+      .bos-card-social { top: 10%; left: 8px; }
       .bos-card-nifty { top: 10%; right: 8px; }
       .bos-hero-left { padding: 28px 20px 36px; }
       .bos-benefits-inner { flex-direction: column; gap: 28px; }
@@ -280,20 +285,6 @@
         src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/DSC09450(2).jpg"
         alt="Sarang Yadav – Founder, Boss of Stock"
       />
-
-      <!-- YouTube card -->
-      <div class="bos-card bos-card-live">
-        <div class="bos-yt-icon">
-          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-            <path d="M23 7s-.3-1.9-1.2-2.7c-1.1-1.2-2.4-1.2-3-1.3C16.6 3 12 3 12 3s-4.6 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5.2 1 7 1 7S.7 9.1.7 11.2v1.9c0 2.1.3 4.2.3 4.2s.3 1.9 1.2 2.7c1.1 1.2 2.6 1.1 3.3 1.2C7.2 21.4 12 21.4 12 21.4s4.6 0 6.8-.2c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.7 1.2-2.7s.3-2.1.3-4.2v-1.9C23.3 9.1 23 7 23 7zm-13.5 8.5V8.5l6.5 3.5-6.5 3.5z"/>
-          </svg>
-        </div>
-        <div>
-          <div class="bos-card-text-title">YouTube</div>
-          <div class="bos-card-big-num">1.2M+</div>
-          <div class="bos-card-text-sub">Subscribers</div>
-        </div>
-      </div>
 
       <!-- Social Media combined card -->
       <div class="bos-card bos-card-social">
