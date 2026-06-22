@@ -18,13 +18,16 @@
     .bosw-hero-img-wrap { width: 100%; position: relative; height: 115vh; min-height: 700px; overflow: hidden; }
     .bosw-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
 
-    @keyframes bosFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+    @keyframes bosFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
 
     /* ── MERGED PILL ── */
 .bosw-pills {
   position: absolute;
   left: 5%;
-  top: 50%;
+  top: 58%;
   transform: translateY(-50%);
   z-index: 10;
 }
@@ -95,16 +98,18 @@
 /* Text animation */
 @keyframes bosFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
 @keyframes bosFadeUp {
-  0% { opacity: 0; transform: translateY(12px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0%   { opacity: 0; transform: translateY(28px) scale(0.92); filter: blur(4px); }
+  60%  { opacity: 1; transform: translateY(-4px) scale(1.03); filter: blur(0px); }
+  80%  { transform: translateY(2px) scale(0.99); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
 }
-.bosw-pill-merged { animation: bosFloat 4s ease-in-out infinite; }
-.bosw-pill-name  { animation: bosFadeUp 0.6s ease forwards; }
-.bosw-pill-role  { animation: bosFadeUp 0.6s ease 0.15s forwards; opacity: 0; }
-.bosw-pill-brand { animation: bosFadeUp 0.6s ease 0.3s forwards; opacity: 0; }
-.bosw-pill-social-label { animation: bosFadeUp 0.6s ease 0.45s forwards; opacity: 0; }
-.bosw-pill-social-row   { animation: bosFadeUp 0.6s ease 0.6s forwards; opacity: 0; }
-.bosw-pill-count-num    { animation: bosFadeUp 0.6s ease 0.75s forwards; opacity: 0; }
+.bosw-pill-merged       { animation: bosFloat 5s ease-in-out infinite; }
+.bosw-pill-name         { animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s  both; }
+.bosw-pill-role         { animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s  both; }
+.bosw-pill-brand        { animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.8s  both; }
+.bosw-pill-social-label { animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 1.1s  both; }
+.bosw-pill-social-row   { animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 1.4s  both; }
+.bosw-pill-count-num    { animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 1.7s  both; }
 
 
 
@@ -291,7 +296,7 @@
   <!-- HERO -->
   <div class="bosw-hero">
     <div class="bosw-hero-img-wrap">
-      <img class="bosw-hero-img" src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/DSC09450(2).jpg" alt="Sarang Yadav – Founder, Boss of Stock" />
+      <img class="bosw-hero-img" src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/DSC09450(2).jpg" alt="Sarang Yadav – Founder, Boss of Stock Market" />
 
      <div class="bosw-pills">
   <div class="bosw-pill-merged">
