@@ -196,8 +196,8 @@
     .bosw-faq-chev { width: 24px; height: 24px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
     .bosw-faq-chev svg { width: 18px; height: 18px; }
     .bosw-faq-item.bosw-faq-open .bosw-faq-chev { transform: rotate(180deg); }
-    .bosw-faq-panel { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-.bosw-faq-item.bosw-faq-open .bosw-faq-panel { max-height: none; }
+    .bosw-faq-panel { display: none; }
+.bosw-faq-panel.bosw-faq-panel-open { display: block; }
     
     .bosw-faq-panelin { padding: 0 20px 18px 70px; font-size: 13.5px; color: #A78BFA; line-height: 1.75; font-family: 'Inter',sans-serif; }
 
@@ -298,7 +298,7 @@
 
     <div class="bosw-hero-left">
       <div class="bosw-h1">
-  Masterx The Markets<br>&amp; Invest In Your Future
+  Masters The Markets<br>&amp; Invest In Your Future
 </div>
 <div class="bosw-sub">Learn from market experts and trade &amp; invest with confidence.</div>
       <div class="bosw-feats">
@@ -600,39 +600,37 @@
 <script>
 (function() {
   function initFAQ() {
-    var items = document.querySelectorAll('.bosw-faq-item');
-    if (!items.length) { setTimeout(initFAQ, 500); return; }
-    items.forEach(function(item) {
-      var btn = item.querySelector('.bosw-faq-btn');
-      if (!btn) return;
-      btn.addEventListener('click', function(e) {
+    var btns = document.querySelectorAll('.bosw-faq-btn');
+    if (!btns || btns.length === 0) {
+      setTimeout(initFAQ, 300);
+      return;
+    }
+    btns.forEach(function(btn) {
+      var newBtn = btn.cloneNode(true);
+      btn.parentNode.replaceChild(newBtn, btn);
+      newBtn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        var isOpen = item.classList.contains('bosw-faq-open');
-        // Close all
-        items.forEach(function(i) {
+        e.stopImmediatePropagation();
+        var item = newBtn.closest('.bosw-faq-item');
+        var panel = item ? item.querySelector('.bosw-faq-panel') : null;
+        if (!item || !panel) return;
+        var isOpen = panel.classList.contains('bosw-faq-panel-open');
+        document.querySelectorAll('.bosw-faq-item').forEach(function(i) {
           i.classList.remove('bosw-faq-open');
           var p = i.querySelector('.bosw-faq-panel');
-          if (p) p.style.maxHeight = '0px';
-          var b = i.querySelector('.bosw-faq-btn');
-          if (b) b.setAttribute('aria-expanded', 'false');
+          if (p) p.classList.remove('bosw-faq-panel-open');
         });
-        // Open clicked if it was closed
         if (!isOpen) {
           item.classList.add('bosw-faq-open');
-          var panel = item.querySelector('.bosw-faq-panel');
-          if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
-          btn.setAttribute('aria-expanded', 'true');
+          panel.classList.add('bosw-faq-panel-open');
         }
       });
     });
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFAQ);
-  } else {
-    initFAQ();
-  }
+  setTimeout(initFAQ, 800);
+  document.addEventListener('DOMContentLoaded', function() { setTimeout(initFAQ, 800); });
+  window.addEventListener('load', function() { setTimeout(initFAQ, 800); });
 })();
 </script>
 </body>
