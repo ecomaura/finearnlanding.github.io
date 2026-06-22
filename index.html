@@ -22,21 +22,21 @@
     .bosw-pills {
       position: absolute;
       left: 5%;
-      top: 58%;
+      top: 70%;
       transform: translateY(-50%);
       z-index: 10;
     }
 
     .bosw-pill-merged {
-      background: rgba(12,7,36,0.92);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-radius: 24px;
       padding: 28px 32px;
       display: flex;
       flex-direction: column;
       gap: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
-      border: 1px solid rgba(124,58,237,0.30);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.18);
+      border: 1px solid rgba(124,58,237,0.18);
       min-width: 260px;
       animation: bosFloat 5s ease-in-out infinite;
     }
@@ -46,12 +46,12 @@
       flex-direction: column;
       gap: 5px;
       padding-bottom: 18px;
-      border-bottom: 1px solid rgba(124,58,237,0.25);
+      border-bottom: 1px solid rgba(124,58,237,0.18);
     }
 
     /* Name — letter-by-letter container */
     .bosw-pill-name {
-      font-size: 20px; font-weight: 900; color: #FFFFFF;
+      font-size: 20px; font-weight: 900; color: #1A1A2E;
       font-family: 'Inter',sans-serif; line-height: 1.2;
       display: flex; flex-wrap: wrap; gap: 0;
     }
@@ -89,7 +89,7 @@
     }
 
     .bosw-pill-role {
-      font-size: 11px; font-weight: 700; color: #A78BFA;
+      font-size: 11px; font-weight: 700; color: #7C3AED;
       font-family: 'Inter',sans-serif; text-transform: uppercase; letter-spacing: 0.12em;
       animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 1.6s both;
     }
@@ -118,13 +118,13 @@
     .bosw-pill-count { display: flex; flex-direction: column; }
 
     .bosw-pill-count-num {
-      font-size: 22px; font-weight: 900; color: #FFFFFF;
+      font-size: 22px; font-weight: 900; color: #1A1A2E;
       font-family: 'Inter',sans-serif; line-height: 1.1;
       animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 2.3s both;
       opacity: 0;
     }
     .bosw-pill-count-lbl {
-      font-size: 10px; font-weight: 600; color: #A78BFA;
+      font-size: 10px; font-weight: 600; color: #7C3AED;
       font-family: 'Inter',sans-serif; text-transform: uppercase; letter-spacing: 0.06em;
       animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 2.4s both;
       opacity: 0;
@@ -276,10 +276,17 @@
     }
     @media (max-width: 600px) {
       .bosw-hero-img-wrap { height: 130vw; min-height: 420px; }
-      .bosw-pills { left: 4%; top: 55%; }
-      .bosw-pill-merged { padding: 20px 22px; min-width: 210px; gap: 16px; }
-      .bosw-pill-name { font-size: 17px; }
-      .bosw-pill-count-num { font-size: 18px; }
+      .bosw-pills { left: 3%; top: 68%; }
+      .bosw-pill-merged { padding: 12px 14px; min-width: 150px; gap: 10px; border-radius: 16px; }
+      .bosw-pill-name { font-size: 13px; }
+      .bosw-pill-count-num { font-size: 14px; }
+      .bosw-pill-role { font-size: 9px; }
+      .bosw-pill-brand { font-size: 10px; }
+      .bosw-pill-count-lbl { font-size: 8px; }
+      .bosw-pill-soc-ico { width: 24px; height: 24px; border-radius: 6px; }
+      .bosw-pill-soc-ico svg { width: 12px; height: 12px; }
+      .bosw-pill-founder-row { padding-bottom: 10px; gap: 3px; }
+      .bosw-pill-social-row { gap: 8px; }
       .bosw-hero-left { padding: 28px 20px 36px; }
       .bosw-ben-in { flex-direction: column; gap: 28px; }
       .bosw-ben-hd { flex: none; width: 100%; }
