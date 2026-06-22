@@ -20,58 +20,93 @@
 
     @keyframes bosFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
 
-    /* ── HERO PILLS ── */
-    .bosw-pills {
-      position: absolute; bottom: 5%; left: 0; right: 0;
-      display: flex; justify-content: center; align-items: flex-end;
-      gap: 12px; z-index: 10; padding: 0 16px;
-    }
+    /* ── MERGED PILL ── */
+.bosw-pills {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
 
-    /* Founder pill */
-    .bosw-pill-f {
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      border-radius: 18px; padding: 14px 18px 14px 14px;
-      display: flex; align-items: center; gap: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.20);
-      animation: bosFloat 4s ease-in-out infinite;
-      border: 1px solid rgba(124,58,237,0.10);
-    }
-    .bosw-pill-f-ava {
-      width: 50px; height: 50px; border-radius: 14px;
-      background: linear-gradient(135deg,#7C3AED 0%,#D946EF 100%);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .bosw-pill-f-ava svg { width: 24px; height: 24px; }
-    .bosw-pill-f-info { display: flex; flex-direction: column; gap: 2px; }
-    .bosw-pill-f-name { font-size: 13px; font-weight: 800; color: #1A1A2E; font-family: 'Inter',sans-serif; line-height: 1.2; }
-    .bosw-pill-f-role { font-size: 9.5px; font-weight: 700; color: #7C3AED; font-family: 'Inter',sans-serif; text-transform: uppercase; letter-spacing: 0.08em; }
-    .bosw-pill-f-brand { font-size: 10px; font-weight: 500; color: #94A3B8; font-family: 'Inter',sans-serif; }
+.bosw-pill-merged {
+  background: rgba(12,7,36,0.92);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+  border: 1px solid rgba(124,58,237,0.30);
+  min-width: 200px;
+  animation: bosFloat 4s ease-in-out infinite;
+}
 
-    /* Social pill */
-    .bosw-pill-s {
-      background: rgba(12,7,36,0.94);
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      border-radius: 18px; padding: 14px 18px;
-      display: flex; flex-direction: column; gap: 10px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.30);
-      animation: bosFloat 4s ease-in-out infinite; animation-delay: -2s;
-      border: 1px solid rgba(124,58,237,0.25);
-      min-width: 148px;
-    }
-    .bosw-pill-s-top { font-size: 9px; font-weight: 700; color: #A78BFA; font-family: 'Inter',sans-serif; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
-    .bosw-pill-s-row { display: flex; align-items: center; gap: 10px; }
-    .bosw-pill-s-ico {
-      width: 32px; height: 32px; border-radius: 9px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .bosw-pill-s-ico--yt { background: #FF0000; }
-    .bosw-pill-s-ico--ig { background: linear-gradient(135deg,#f09433 0%,#dc2743 50%,#bc1888 100%); }
-    .bosw-pill-s-ico svg { width: 16px; height: 16px; display: block; }
-    .bosw-pill-s-data { display: flex; flex-direction: column; }
-    .bosw-pill-s-num { font-size: 15px; font-weight: 900; color: #FFFFFF; font-family: 'Inter',sans-serif; line-height: 1.1; }
-    .bosw-pill-s-lbl { font-size: 9px; font-weight: 600; color: #A78BFA; font-family: 'Inter',sans-serif; text-transform: uppercase; letter-spacing: 0.05em; }
-    .bosw-pill-s-div { height: 1px; background: rgba(124,58,237,0.25); }
+/* Founder row */
+.bosw-pill-founder-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(124,58,237,0.25);
+}
+.bosw-pill-name {
+  font-size: 15px; font-weight: 900; color: #FFFFFF;
+  font-family: 'Inter',sans-serif; line-height: 1.2;
+}
+.bosw-pill-role {
+  font-size: 10px; font-weight: 700; color: #A78BFA;
+  font-family: 'Inter',sans-serif; text-transform: uppercase; letter-spacing: 0.1em;
+}
+.bosw-pill-brand {
+  font-size: 11px; font-weight: 500; color: #64748B;
+  font-family: 'Inter',sans-serif;
+}
+
+/* Social row */
+.bosw-pill-social-label {
+  font-size: 9px; font-weight: 700; color: #A78BFA;
+  font-family: 'Inter',sans-serif; text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+.bosw-pill-social-row {
+  display: flex; align-items: center; gap: 10px;
+}
+.bosw-pill-soc-ico {
+  width: 30px; height: 30px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.bosw-pill-soc-ico--yt { background: #FF0000; }
+.bosw-pill-soc-ico--ig { background: linear-gradient(135deg,#f09433 0%,#dc2743 50%,#bc1888 100%); }
+.bosw-pill-soc-ico svg { width: 14px; height: 14px; display: block; }
+.bosw-pill-count {
+  display: flex; flex-direction: column;
+}
+.bosw-pill-count-num {
+  font-size: 18px; font-weight: 900; color: #FFFFFF;
+  font-family: 'Inter',sans-serif; line-height: 1.1;
+}
+.bosw-pill-count-lbl {
+  font-size: 9px; font-weight: 600; color: #A78BFA;
+  font-family: 'Inter',sans-serif; text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+/* Text animation */
+@keyframes bosFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+@keyframes bosFadeUp {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.bosw-pill-merged { animation: bosFloat 4s ease-in-out infinite; }
+.bosw-pill-name  { animation: bosFadeUp 0.6s ease forwards; }
+.bosw-pill-role  { animation: bosFadeUp 0.6s ease 0.15s forwards; opacity: 0; }
+.bosw-pill-brand { animation: bosFadeUp 0.6s ease 0.3s forwards; opacity: 0; }
+.bosw-pill-social-label { animation: bosFadeUp 0.6s ease 0.45s forwards; opacity: 0; }
+.bosw-pill-social-row   { animation: bosFadeUp 0.6s ease 0.6s forwards; opacity: 0; }
+.bosw-pill-count-num    { animation: bosFadeUp 0.6s ease 0.75s forwards; opacity: 0; }
+
+
 
     /* ── HERO LEFT ── */
     .bosw-hero-left { background: #F9F7FF; padding: 40px max(24px,5vw) 48px; text-align: center; display: flex; flex-direction: column; align-items: center; }
@@ -226,15 +261,12 @@
     }
     @media (max-width: 600px) {
       .bosw-hero-img-wrap { height: 130vw; min-height: 420px; }
-      .bosw-pills { gap: 8px; padding: 0 10px; bottom: 4%; }
-      .bosw-pill-f { padding: 10px 12px 10px 10px; gap: 8px; }
-      .bosw-pill-f-ava { width: 38px; height: 38px; border-radius: 10px; }
-      .bosw-pill-f-ava svg { width: 18px; height: 18px; }
-      .bosw-pill-f-name { font-size: 11px; }
-      .bosw-pill-s { padding: 10px 12px; min-width: 120px; }
-      .bosw-pill-s-num { font-size: 13px; }
-      .bosw-pill-s-ico { width: 26px; height: 26px; border-radius: 7px; }
-      .bosw-pill-s-ico svg { width: 13px; height: 13px; }
+      /* Responsive */
+
+  .bosw-pills { left: 4%; top: 45%; }
+  .bosw-pill-merged { padding: 16px 18px; min-width: 170px; gap: 12px; }
+  .bosw-pill-name { font-size: 13px; }
+  .bosw-pill-count-num { font-size: 15px; }
       .bosw-hero-left { padding: 28px 20px 36px; }
       .bosw-ben-in { flex-direction: column; gap: 28px; }
       .bosw-ben-hd { flex: none; width: 100%; }
@@ -261,42 +293,39 @@
     <div class="bosw-hero-img-wrap">
       <img class="bosw-hero-img" src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/DSC09450(2).jpg" alt="Sarang Yadav – Founder, Boss of Stock" />
 
-      <!-- HERO PILLS -->
-<div class="bosw-pills">
+     <div class="bosw-pills">
+  <div class="bosw-pill-merged">
 
-  <!-- Founder pill -->
-  <div class="bosw-pill-f">
-    <div class="bosw-pill-f-info">
-      <div class="bosw-pill-f-name">Sarang Yadav</div>
-      <div class="bosw-pill-f-role">Founder</div>
-      <div class="bosw-pill-f-brand">Boss of Stock Market</div>
+    <!-- Founder info -->
+    <div class="bosw-pill-founder-row">
+      <div class="bosw-pill-name">Sarang Yadav</div>
+      <div class="bosw-pill-role">Founder</div>
+      <div class="bosw-pill-brand">Boss of Stock</div>
     </div>
-  </div>
 
-  <!-- Social pill -->
-  <div class="bosw-pill-s">
-    <div class="bosw-pill-s-top">Social Reach</div>
-    <div class="bosw-pill-s-row">
-      <div class="bosw-pill-s-ico bosw-pill-s-ico--yt">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#ffffff" d="M21.6 7.2s-.2-1.5-.9-2.1c-.8-.9-1.8-.9-2.2-1C16.2 4 12 4 12 4s-4.2 0-6.5.1c-.4 0-1.4.1-2.2 1C2.6 5.7 2.4 7.2 2.4 7.2S2.2 9 2.2 10.8v1.4c0 1.8.2 3.6.2 3.6s.2 1.5.9 2.1c.8.9 2 .8 2.5.9C7.2 19 12 19 12 19s4.2 0 6.5-.2c.4 0 1.4-.1 2.2-1 .7-.6.9-2.1.9-2.1s.2-1.8.2-3.6v-1.4C21.8 9 21.6 7.2 21.6 7.2z"/>
-          <polygon fill="#FF0000" points="10,8.5 10,15.5 16,12"/>
-        </svg>
-      </div>
-      <div class="bosw-pill-s-ico bosw-pill-s-ico--ig" style="margin-left:4px;">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#ffffff" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
-      </div>
-      <div class="bosw-pill-s-data" style="margin-left:8px;">
-        <div class="bosw-pill-s-num">850K+</div>
-        <div class="bosw-pill-s-lbl">Followers</div>
+    <!-- Social reach -->
+    <div>
+      <div class="bosw-pill-social-label">Social Reach</div>
+      <div class="bosw-pill-social-row">
+        <div class="bosw-pill-soc-ico bosw-pill-soc-ico--yt">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#ffffff" d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+          </svg>
+        </div>
+        <div class="bosw-pill-soc-ico bosw-pill-soc-ico--ig">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#ffffff" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </div>
+        <div class="bosw-pill-count">
+          <div class="bosw-pill-count-num">850K+</div>
+          <div class="bosw-pill-count-lbl">Followers</div>
+        </div>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>
-    </div>
 
     <div class="bosw-hero-left">
       <div class="bosw-h1">
