@@ -197,7 +197,8 @@
     .bosw-faq-chev svg { width: 18px; height: 18px; }
     .bosw-faq-item.bosw-faq-open .bosw-faq-chev { transform: rotate(180deg); }
     .bosw-faq-panel { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-    .bosw-faq-item.bosw-faq-open .bosw-faq-panel { max-height: 400px; }
+.bosw-faq-item.bosw-faq-open .bosw-faq-panel { max-height: none; }
+    
     .bosw-faq-panelin { padding: 0 20px 18px 70px; font-size: 13.5px; color: #A78BFA; line-height: 1.75; font-family: 'Inter',sans-serif; }
 
     /* ── FOOTER ── */
@@ -597,25 +598,42 @@
 </div><!-- /bosw -->
 
 <script>
-  // FAQ accordion
-  document.querySelectorAll('.bosw-faq-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var item = btn.closest('.bosw-faq-item');
-      var isOpen = item.classList.contains('bosw-faq-open');
-      document.querySelectorAll('.bosw-faq-item').forEach(function(i){ i.classList.remove('bosw-faq-open'); });
-      if (!isOpen) item.classList.add('bosw-faq-open');
+(function() {
+  function initFAQ() {
+    var items = document.querySelectorAll('.bosw-faq-item');
+    if (!items.length) { setTimeout(initFAQ, 500); return; }
+    items.forEach(function(item) {
+      var btn = item.querySelector('.bosw-faq-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var isOpen = item.classList.contains('bosw-faq-open');
+        // Close all
+        items.forEach(function(i) {
+          i.classList.remove('bosw-faq-open');
+          var p = i.querySelector('.bosw-faq-panel');
+          if (p) p.style.maxHeight = '0px';
+          var b = i.querySelector('.bosw-faq-btn');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('bosw-faq-open');
+          var panel = item.querySelector('.bosw-faq-panel');
+          if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
     });
-  });
-
-  // iframe height reporter
-  var _bosLastH = 0;
-  function _bosSendH() {
-    var h = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
-    if (Math.abs(h - _bosLastH) > 10) { _bosLastH = h; window.parent.postMessage({type:'iframeHeight',height:h},'*'); }
   }
-  window.addEventListener('load', function(){ setTimeout(_bosSendH,500); setTimeout(_bosSendH,1500); setTimeout(_bosSendH,3000); });
-  window.addEventListener('resize', function(){ clearTimeout(window._bosRT); window._bosRT = setTimeout(_bosSendH,400); });
-  if (document.readyState === 'complete') setTimeout(_bosSendH, 500);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFAQ);
+  } else {
+    initFAQ();
+  }
+})();
 </script>
 </body>
 </html>
