@@ -420,12 +420,165 @@
       font-family: 'Inter', sans-serif;
     }
 
+    /* ── POPULAR COURSES SECTION ── */
+    .bos-courses-section {
+      background: #F9F7FF;
+      padding: 60px 5% 70px;
+    }
+    .bos-courses-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .bos-courses-line {
+      flex: 0 0 50px;
+      height: 1.5px;
+      background: #7C3AED;
+      border-radius: 2px;
+    }
+    .bos-courses-eyebrow {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: #7C3AED;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    .bos-courses-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .bos-course-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(124,58,237,0.08);
+      border: 1px solid #EDE9FE;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .bos-course-card:hover {
+      box-shadow: 0 8px 32px rgba(124,58,237,0.16);
+      transform: translateY(-3px);
+    }
+    .bos-course-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #1A1A2E;
+    }
+    .bos-course-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .bos-course-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #D946EF;
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 800;
+      font-family: 'Inter', sans-serif;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+    .bos-course-body {
+      padding: 18px 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .bos-course-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #1A1A2E;
+      line-height: 1.35;
+      font-family: 'Inter', sans-serif;
+    }
+    .bos-course-meta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .bos-course-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11.5px;
+      color: #7C3AED;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      background: #EDE9FE;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+    .bos-course-meta-icon {
+      width: 12px;
+      height: 12px;
+      color: #7C3AED;
+      flex-shrink: 0;
+    }
+    .bos-course-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-top: 2px;
+    }
+    .bos-course-price-old {
+      font-size: 13px;
+      color: #94A3B8;
+      text-decoration: line-through;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+    .bos-course-price {
+      font-size: 20px;
+      font-weight: 900;
+      color: #1A1A2E;
+      font-family: 'Inter', sans-serif;
+    }
+    .bos-course-btn {
+      display: block;
+      width: 100%;
+      background: #7C3AED;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      padding: 12px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      margin-top: auto;
+      transition: background 0.18s;
+      box-sizing: border-box;
+    }
+    .bos-course-btn:hover { background: #6D28D9; }
+
     /* ── MOBILE ── */
     @media (max-width: 700px) {
       .bos-learn-section { padding: 44px 5%; }
       .bos-learn-inner { flex-direction: column; gap: 36px; }
       .bos-learn-right { flex: none; width: 100%; }
       .bos-bonus-card { padding: 22px 18px; }
+      .bos-courses-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .bos-courses-section { padding: 44px 5% 54px; }
+    }
+    @media (min-width: 701px) and (max-width: 900px) {
+      .bos-courses-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
       .bos-hero-right { height: 130vw; min-height: 420px; }
@@ -709,6 +862,63 @@
     </div>
   </section>
 
+  <!-- POPULAR COURSES SECTION -->
+  <section class="bos-courses-section">
+    <div class="bos-courses-header">
+      <div class="bos-courses-line"></div>
+      <div class="bos-courses-eyebrow">POPULAR COURSES</div>
+      <div class="bos-courses-line"></div>
+    </div>
+    <div class="bos-courses-grid">
+
+      <!-- Card 1 -->
+      <div class="bos-course-card">
+        <div class="bos-course-img-wrap">
+          <img class="bos-course-img" src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/6a0bf892c8cb6831fb6eecc1_scaled_cover.jpg" alt="Boss Option Buying System" loading="lazy" />
+        </div>
+        <div class="bos-course-body">
+          <div class="bos-course-title">Boss Option Buying System</div>
+          <div class="bos-course-price-row">
+            <span class="bos-course-price-old">₹2,999</span>
+            <span class="bos-course-price">₹1,999</span>
+          </div>
+          <a class="bos-course-btn" href="https://www.finearn.in/courses/Smart-Options-Blueprint-6a0bf892c8cb6831fb6eecc1" target="_blank" rel="noopener">View Course</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bos-course-card">
+        <div class="bos-course-img-wrap">
+          <img class="bos-course-img" src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/6a17d58d7c0d3a266b2de4c0_scaled_cover.jpg" alt="Boss Trend Riding System" loading="lazy" />
+        </div>
+        <div class="bos-course-body">
+          <div class="bos-course-title">Boss Trend Riding System</div>
+          <div class="bos-course-price-row">
+            <span class="bos-course-price-old">₹1,499</span>
+            <span class="bos-course-price">₹999</span>
+          </div>
+          <a class="bos-course-btn" href="https://www.finearn.in/courses/Option-Trading-Accelerator-6a17d58d7c0d3a266b2de4c0" target="_blank" rel="noopener">View Course</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bos-course-card">
+        <div class="bos-course-img-wrap">
+          <img class="bos-course-img" src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/6a17d3870f007814e1a59aae_scaled_cover.jpg" alt="Option Wealth Formula" loading="lazy" />
+        </div>
+        <div class="bos-course-body">
+          <div class="bos-course-title">Option Wealth Formula</div>
+          <div class="bos-course-price-row">
+            <span class="bos-course-price-old">₹1,499</span>
+            <span class="bos-course-price">₹999</span>
+          </div>
+          <a class="bos-course-btn" href="https://www.finearn.in/courses/Option-Wealth-Formula-6a17d3870f007814e1a59aae" target="_blank" rel="noopener">View Course</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
 </div><!-- /bos-wrap -->
 
 <script>
@@ -737,6 +947,7 @@
   });
   if (document.readyState === 'complete') { setTimeout(sendHeight, 500); }
 </script>
+
 
 </body>
 </html>
