@@ -568,6 +568,95 @@
     }
     .bos-course-btn:hover { background: #6D28D9; }
 
+    /* ── TESTIMONIALS SECTION ── */
+    .bos-testi-section {
+      background: #F9F7FF;
+      padding: 60px 5% 70px;
+    }
+    .bos-testi-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .bos-testi-line {
+      flex: 0 0 50px;
+      height: 1.5px;
+      background: #7C3AED;
+      border-radius: 2px;
+    }
+    .bos-testi-eyebrow {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: #7C3AED;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    .bos-testi-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .bos-testi-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      padding: 28px 24px 22px;
+      border: 1px solid #EDE9FE;
+      box-shadow: 0 2px 16px rgba(124,58,237,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: box-shadow 0.2s;
+    }
+    .bos-testi-card:hover { box-shadow: 0 8px 32px rgba(124,58,237,0.13); }
+    .bos-testi-quote {
+      font-size: 52px;
+      line-height: 0.8;
+      color: #7C3AED;
+      font-family: Georgia, serif;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .bos-testi-text {
+      font-size: 13.5px;
+      color: #374151;
+      line-height: 1.7;
+      font-family: 'Inter', sans-serif;
+      flex: 1;
+    }
+    .bos-testi-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .bos-testi-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1A1A2E;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 5px;
+    }
+    .bos-testi-stars {
+      color: #F59E0B;
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+    .bos-testi-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 3px solid #EDE9FE;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 700px) {
       .bos-learn-section { padding: 44px 5%; }
@@ -576,9 +665,13 @@
       .bos-bonus-card { padding: 22px 18px; }
       .bos-courses-grid { grid-template-columns: 1fr; max-width: 420px; }
       .bos-courses-section { padding: 44px 5% 54px; }
+      .bos-testi-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .bos-testi-section { padding: 44px 5% 54px; }
+      .bos-testi-eyebrow { font-size: 11px; }
     }
     @media (min-width: 701px) and (max-width: 900px) {
       .bos-courses-grid { grid-template-columns: repeat(2, 1fr); }
+      .bos-testi-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
       .bos-hero-right { height: 130vw; min-height: 420px; }
@@ -913,6 +1006,143 @@
             <span class="bos-course-price">₹999</span>
           </div>
           <a class="bos-course-btn" href="https://www.finearn.in/courses/Option-Wealth-Formula-6a17d3870f007814e1a59aae" target="_blank" rel="noopener">View Course</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="bos-testi-section">
+    <div class="bos-testi-header">
+      <div class="bos-testi-line"></div>
+      <div class="bos-testi-eyebrow">WHAT OUR STUDENTS SAY</div>
+      <div class="bos-testi-line"></div>
+    </div>
+    <div class="bos-testi-grid">
+
+      <!-- Testimonial 1 -->
+      <div class="bos-testi-card">
+        <div class="bos-testi-quote" aria-hidden="true">"</div>
+        <div class="bos-testi-text">The course is well structured and very practical. Sarang sir ke teaching style se mujhe options trading bohot achhe se samajh aayi. Highly recommended!</div>
+        <div class="bos-testi-footer">
+          <div>
+            <div class="bos-testi-name">– Rahul Mehta</div>
+            <div class="bos-testi-stars" aria-label="5 stars">★★★★★</div>
+          </div>
+          <!-- Indian male avatar -->
+          <svg class="bos-testi-avatar" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Rahul Mehta">
+            <circle cx="40" cy="40" r="40" fill="#EDE9FE"/>
+            <!-- body -->
+            <ellipse cx="40" cy="68" rx="22" ry="14" fill="#7C3AED"/>
+            <!-- kurta collar -->
+            <path d="M33 58 Q40 63 47 58 L49 68 Q40 72 31 68Z" fill="#6D28D9"/>
+            <!-- neck -->
+            <rect x="36" y="50" width="8" height="8" rx="2" fill="#C8956C"/>
+            <!-- head -->
+            <ellipse cx="40" cy="38" rx="14" ry="15" fill="#C8956C"/>
+            <!-- hair -->
+            <ellipse cx="40" cy="25" rx="14" ry="8" fill="#1A1A2E"/>
+            <rect x="26" y="25" width="4" height="10" rx="2" fill="#1A1A2E"/>
+            <rect x="50" y="25" width="4" height="10" rx="2" fill="#1A1A2E"/>
+            <!-- eyes -->
+            <ellipse cx="35" cy="38" rx="2.2" ry="2.5" fill="#1A1A2E"/>
+            <ellipse cx="45" cy="38" rx="2.2" ry="2.5" fill="#1A1A2E"/>
+            <!-- eyebrows -->
+            <path d="M32 34 Q35 32.5 38 34" stroke="#1A1A2E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M42 34 Q45 32.5 48 34" stroke="#1A1A2E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- nose -->
+            <ellipse cx="40" cy="43" rx="2" ry="1.2" fill="#B07D55"/>
+            <!-- smile -->
+            <path d="M35 47 Q40 51 45 47" stroke="#8B5E3C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="bos-testi-card">
+        <div class="bos-testi-quote" aria-hidden="true">"</div>
+        <div class="bos-testi-text">Best platform to learn share market. Risk management module ne meri trading ko completely transform kar diya. Live sessions are absolutely amazing!</div>
+        <div class="bos-testi-footer">
+          <div>
+            <div class="bos-testi-name">– Priya Sharma</div>
+            <div class="bos-testi-stars" aria-label="5 stars">★★★★★</div>
+          </div>
+          <!-- Indian female avatar -->
+          <svg class="bos-testi-avatar" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Priya Sharma">
+            <circle cx="40" cy="40" r="40" fill="#FDE8F5"/>
+            <!-- body / saree -->
+            <ellipse cx="40" cy="68" rx="22" ry="14" fill="#D946EF"/>
+            <path d="M33 58 Q40 63 47 58 L49 68 Q40 72 31 68Z" fill="#C026D3"/>
+            <!-- neck -->
+            <rect x="36" y="50" width="8" height="8" rx="2" fill="#C8956C"/>
+            <!-- head -->
+            <ellipse cx="40" cy="38" rx="13" ry="14" fill="#C8956C"/>
+            <!-- long hair -->
+            <ellipse cx="40" cy="24" rx="14" ry="7" fill="#1A1A2E"/>
+            <rect x="26" y="24" width="5" height="22" rx="2.5" fill="#1A1A2E"/>
+            <rect x="49" y="24" width="5" height="22" rx="2.5" fill="#1A1A2E"/>
+            <!-- bindi -->
+            <circle cx="40" cy="31" r="1.8" fill="#E11D48"/>
+            <!-- eyes -->
+            <ellipse cx="35.5" cy="38" rx="2" ry="2.3" fill="#1A1A2E"/>
+            <ellipse cx="44.5" cy="38" rx="2" ry="2.3" fill="#1A1A2E"/>
+            <!-- kajal flick -->
+            <path d="M33 37 L30 36" stroke="#1A1A2E" stroke-width="1" stroke-linecap="round"/>
+            <path d="M46.5 37 L49.5 36" stroke="#1A1A2E" stroke-width="1" stroke-linecap="round"/>
+            <!-- eyebrows -->
+            <path d="M32.5 34.5 Q35.5 33 38.5 34.5" stroke="#1A1A2E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M41.5 34.5 Q44.5 33 47.5 34.5" stroke="#1A1A2E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- nose -->
+            <ellipse cx="40" cy="43" rx="1.8" ry="1" fill="#B07D55"/>
+            <!-- smile -->
+            <path d="M36 47 Q40 51 44 47" stroke="#8B5E3C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="bos-testi-card">
+        <div class="bos-testi-quote" aria-hidden="true">"</div>
+        <div class="bos-testi-text">Maine pehle bohot jagah se seekhne ki koshish ki, par Boss of Stock ne jo clarity di woh kahin aur nahi mili. Ab main confidently trade karta hoon.</div>
+        <div class="bos-testi-footer">
+          <div>
+            <div class="bos-testi-name">– Ankit Verma</div>
+            <div class="bos-testi-stars" aria-label="5 stars">★★★★★</div>
+          </div>
+          <!-- Indian male avatar 2 with glasses -->
+          <svg class="bos-testi-avatar" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Ankit Verma">
+            <circle cx="40" cy="40" r="40" fill="#E8F5E9"/>
+            <!-- body -->
+            <ellipse cx="40" cy="68" rx="22" ry="14" fill="#059669"/>
+            <path d="M33 58 Q40 63 47 58 L49 68 Q40 72 31 68Z" fill="#047857"/>
+            <!-- collar / shirt -->
+            <path d="M35 56 L40 60 L45 56" stroke="#047857" stroke-width="2" fill="none"/>
+            <!-- neck -->
+            <rect x="36" y="50" width="8" height="8" rx="2" fill="#B07D55"/>
+            <!-- head — slightly darker skin -->
+            <ellipse cx="40" cy="38" rx="14" ry="15" fill="#B07D55"/>
+            <!-- short hair -->
+            <ellipse cx="40" cy="24" rx="14" ry="7" fill="#2D1B00"/>
+            <rect x="26" y="24" width="4" height="8" rx="2" fill="#2D1B00"/>
+            <rect x="50" y="24" width="4" height="8" rx="2" fill="#2D1B00"/>
+            <!-- glasses frame -->
+            <rect x="30" y="35.5" width="10" height="7" rx="3" fill="none" stroke="#1A1A2E" stroke-width="1.6"/>
+            <rect x="41" y="35.5" width="10" height="7" rx="3" fill="none" stroke="#1A1A2E" stroke-width="1.6"/>
+            <line x1="40" y1="38.5" x2="41" y2="38.5" stroke="#1A1A2E" stroke-width="1.4"/>
+            <line x1="26" y1="38.5" x2="30" y2="38.5" stroke="#1A1A2E" stroke-width="1.4"/>
+            <line x1="51" y1="38.5" x2="54" y2="38.5" stroke="#1A1A2E" stroke-width="1.4"/>
+            <!-- eyes behind glasses -->
+            <ellipse cx="35" cy="39" rx="1.8" ry="2" fill="#1A1A2E"/>
+            <ellipse cx="46" cy="39" rx="1.8" ry="2" fill="#1A1A2E"/>
+            <!-- eyebrows -->
+            <path d="M31 34 Q35 32 39 34" stroke="#2D1B00" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M42 34 Q46 32 50 34" stroke="#2D1B00" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- nose -->
+            <ellipse cx="40" cy="44" rx="2" ry="1.2" fill="#956040"/>
+            <!-- smile -->
+            <path d="M35 48 Q40 52 45 48" stroke="#7A4A28" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
         </div>
       </div>
 
