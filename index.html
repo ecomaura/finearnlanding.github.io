@@ -98,20 +98,21 @@
       display: flex;
       align-items: stretch;
       min-height: 100vh;
-      max-width: 1400px;
-      margin: 0 auto;
       width: 100%;
-      padding: 0 5%;
+      overflow: hidden;
+      padding: 0 4%;
     }
 
     /* ── LEFT CONTENT ── */
     .bosw-hero-left {
-      flex: 1 1 55%;
+      flex: 0 0 50%;
+      max-width: 50%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 60px 40px 60px 0;
+      padding: 60px 28px 60px 0;
       gap: 0;
+      min-width: 0;
     }
 
     /* Finearn logo top */
@@ -120,7 +121,7 @@
       margin-bottom: 32px;
       animation: bosHeroFadeUp 0.7s ease both;
     }
-    .bosw-hero-logo img { height: 36px; width: auto; filter: brightness(0) invert(1); }
+    .bosw-hero-logo img { height: 36px; width: auto; }
 
     /* WELCOME TO line */
     .bosw-hero-welcome {
@@ -145,7 +146,7 @@
 
     /* BOSS OF STOCK MARKET */
     .bosw-hero-h1 {
-      font-size: clamp(2.8rem,7vw,6rem);
+      font-size: clamp(2.4rem,5.5vw,5rem);
       font-weight: 900;
       line-height: 0.95;
       text-transform: uppercase;
@@ -248,11 +249,13 @@
 
     /* ── RIGHT IMAGE ── */
     .bosw-hero-right {
-      flex: 0 0 45%;
+      flex: 0 0 50%;
+      max-width: 50%;
       position: relative;
       display: flex;
       align-items: flex-end;
       justify-content: center;
+      overflow: visible;
     }
 
     /* Gold glow layers behind person */
@@ -285,17 +288,17 @@
 
     .bosw-hero-person {
       position: relative; z-index:1;
-      width: 100%; max-width: 520px;
+      width: 100%; max-width: 460px;
       height: auto;
       object-fit: contain;
       display: block;
       animation: bosHeroSlideLeft 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s both, bosPersonGlow 4s ease-in-out 1.5s infinite;
     }
 
-    /* Founder pill — bottom right of image */
+    /* Founder pill — bottom right, stays inside viewport */
     .bosw-hero-pill {
       position: absolute;
-      bottom: 36px; right: 0;
+      bottom: 36px; right: 4px;
       z-index: 10;
       animation: bosFadeUp 0.9s ease 1.2s both;
     }
@@ -304,8 +307,9 @@
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border: 1.5px solid #D4AF37;
       border-radius: 16px;
-      padding: 20px 24px;
-      min-width: 240px;
+      padding: 16px 20px;
+      min-width: 210px;
+      max-width: 230px;
       display: flex; flex-direction: column; gap: 10px;
       animation: bosFloat 5s ease-in-out infinite;
     }
@@ -491,12 +495,12 @@
       .bosw-testi-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
     }
     @media (max-width: 860px) {
-      .bosw-hero-inner { flex-direction: column; padding: 0; min-height: auto; }
-      .bosw-hero-left { padding: 48px 5% 24px; flex: none; }
-      .bosw-hero-right { flex: none; width: 100%; min-height: 380px; }
-      .bosw-hero-person { max-width: 320px; margin: 0 auto; }
+      .bosw-hero-inner { flex-direction: column; padding: 0; min-height: auto; overflow: hidden; }
+      .bosw-hero-left { flex: none; max-width: 100%; padding: 48px 5% 24px; }
+      .bosw-hero-right { flex: none; max-width: 100%; width: 100%; min-height: 380px; }
+      .bosw-hero-person { max-width: 300px; margin: 0 auto; }
       .bosw-hero-pill { bottom: 16px; right: 5%; }
-      .bosw-hero-pill-inner { min-width: 200px; padding: 14px 18px; }
+      .bosw-hero-pill-inner { min-width: 190px; max-width: 210px; padding: 14px 18px; }
       .bosw-hero-h1 { font-size: clamp(2.2rem,9vw,3.5rem); }
     }
     @media (max-width: 600px) {
