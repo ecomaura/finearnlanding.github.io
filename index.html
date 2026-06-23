@@ -143,7 +143,7 @@
       background: linear-gradient(90deg, #D4AF37, transparent);
     }
 
-    /* BOSS OF STOCK */
+    /* BOSS OF STOCK MARKET */
     .bosw-hero-h1 {
       font-size: clamp(2.8rem,7vw,6rem);
       font-weight: 900;
@@ -151,9 +151,13 @@
       text-transform: uppercase;
       margin-bottom: 0;
       font-family: 'Inter',sans-serif;
+      display: flex;
+      flex-direction: column;
     }
-    .bosw-hero-h1-boss {
+    /* Line 1: BOSS OF STOCK — all gold, nowrap */
+    .bosw-hero-h1-line1 {
       display: block;
+      white-space: nowrap;
       background: linear-gradient(90deg, #D4AF37 0%, #FFE566 40%, #D4AF37 60%, #B8860B 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
@@ -161,47 +165,39 @@
       background-clip: text;
       animation: bosHeroFadeUp 0.8s ease 0.25s both, bosShimmer 4s linear 1.5s infinite;
     }
-    .bosw-hero-h1-of {
-      display: block;
-      background: linear-gradient(90deg, #D4AF37 0%, #FFE566 40%, #D4AF37 60%, #B8860B 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: bosHeroFadeUp 0.8s ease 0.35s both, bosShimmer 4s linear 1.7s infinite;
-    }
-    .bosw-hero-h1-stock {
+    /* Line 2: MARKET — white */
+    .bosw-hero-h1-line2 {
       display: block;
       color: #FFFFFF;
+      -webkit-text-fill-color: #FFFFFF;
       animation: bosHeroFadeUp 0.8s ease 0.45s both;
-    }
-    .bosw-hero-h1-market {
-      display: block;
-      color: #FFFFFF;
-      animation: bosHeroFadeUp 0.8s ease 0.55s both;
     }
 
     /* LEARN • ANALYZE • GROW • SUCCEED */
     .bosw-hero-bullets {
-      display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px;
+      display: flex; flex-wrap: nowrap; align-items: center; gap: 0 10px;
       margin-top: 18px; margin-bottom: 20px;
       animation: bosHeroFadeUp 0.8s ease 0.7s both;
+      white-space: nowrap;
     }
     .bosw-hero-bullet {
-      font-size: clamp(11px,1.1vw,13px);
+      font-size: clamp(10px,1vw,13px);
       font-weight: 800;
       color: #FFFFFF;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      flex-shrink: 0;
     }
     .bosw-hero-dot {
       width: 5px; height: 5px; border-radius: 50%;
-      background: #D4AF37; flex-shrink:0;
+      background: #D4AF37; flex-shrink: 0;
     }
 
-    /* Tagline box */
+    /* Tagline box — fits text width */
     .bosw-hero-tagline {
       display: inline-flex; align-items: center;
+      align-self: flex-start;
+      width: fit-content;
       border: 1.5px solid #D4AF37;
       border-radius: 6px;
       padding: 10px 20px;
@@ -210,6 +206,7 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: #FFFFFF;
+      white-space: nowrap;
       margin-bottom: 32px;
       animation: bosHeroFadeUp 0.8s ease 0.85s both;
     }
@@ -258,14 +255,32 @@
       justify-content: center;
     }
 
-    /* Gold glow behind person */
+    /* Gold glow layers behind person */
     .bosw-hero-right::before {
       content:'';
       position:absolute;
       bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 80%; height: 80%;
-      background: radial-gradient(ellipse at center bottom, rgba(212,175,55,0.25) 0%, transparent 70%);
+      width: 90%; height: 90%;
+      background:
+        radial-gradient(ellipse at 50% 80%, rgba(212,175,55,0.45) 0%, transparent 55%),
+        radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.18) 0%, transparent 75%);
       z-index:0;
+      pointer-events: none;
+    }
+    /* Extra ambient halo */
+    .bosw-hero-right::after {
+      content:'';
+      position:absolute;
+      top: 10%; left: 50%; transform: translateX(-50%);
+      width: 70%; height: 80%;
+      background: radial-gradient(ellipse at 50% 40%, rgba(255,200,50,0.10) 0%, transparent 65%);
+      z-index:0;
+      pointer-events: none;
+    }
+
+    @keyframes bosPersonGlow {
+      0%,100% { filter: drop-shadow(0 0 30px rgba(212,175,55,0.45)) drop-shadow(0 0 80px rgba(212,175,55,0.2)); }
+      50%      { filter: drop-shadow(0 0 55px rgba(212,175,55,0.70)) drop-shadow(0 0 120px rgba(212,175,55,0.32)); }
     }
 
     .bosw-hero-person {
@@ -274,8 +289,7 @@
       height: auto;
       object-fit: contain;
       display: block;
-      animation: bosHeroSlideLeft 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s both;
-      filter: drop-shadow(0 0 40px rgba(212,175,55,0.2));
+      animation: bosHeroSlideLeft 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s both, bosPersonGlow 4s ease-in-out 1.5s infinite;
     }
 
     /* Founder pill — bottom right of image */
@@ -539,9 +553,8 @@
 
         <!-- Big Title -->
         <div class="bosw-hero-h1">
-          <span class="bosw-hero-h1-boss">Boss of</span>
-          <span class="bosw-hero-h1-stock">Stock</span>
-          <span class="bosw-hero-h1-market">Market</span>
+          <span class="bosw-hero-h1-line1">Boss of Stock</span>
+          <span class="bosw-hero-h1-line2">Market</span>
         </div>
 
         <!-- Bullets -->
