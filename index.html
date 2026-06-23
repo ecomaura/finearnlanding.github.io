@@ -13,134 +13,336 @@
     .bosw img { display: block; max-width: 100%; }
     .bosw { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #1A1A2E; overflow-x: clip; }
 
-    /* ── HERO ── */
-    .bosw-hero { display: flex; flex-direction: column; position: relative; }
-    .bosw-hero-img-wrap { width: 100%; position: relative; height: 115vh; min-height: 700px; overflow: hidden; }
-    .bosw-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-
-    /* ── MERGED PILL ── */
-    .bosw-pills {
-      position: absolute;
-      left: 5%;
-      top: 70%;
-      transform: translateY(-50%);
-      z-index: 10;
+    /* ── HERO (NEW DARK GOLD DESIGN) ── */
+    @keyframes bosHeroFadeUp {
+      0%   { opacity:0; transform:translateY(40px); }
+      100% { opacity:1; transform:translateY(0); }
+    }
+    @keyframes bosHeroSlideLeft {
+      0%   { opacity:0; transform:translateX(60px); }
+      100% { opacity:1; transform:translateX(0); }
+    }
+    @keyframes bosLetterPop {
+      0%   { opacity:0; transform:translateY(22px) scale(0.78); filter:blur(6px); }
+      55%  { opacity:1; transform:translateY(-5px) scale(1.12); filter:blur(0); }
+      75%  { transform:translateY(2px) scale(0.96); }
+      100% { opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
+    }
+    @keyframes bosFadeUp {
+      0%   { opacity:0; transform:translateY(28px) scale(0.92); filter:blur(4px); }
+      60%  { opacity:1; transform:translateY(-4px) scale(1.03); filter:blur(0); }
+      80%  { transform:translateY(2px) scale(0.99); }
+      100% { opacity:1; transform:translateY(0) scale(1); }
+    }
+    @keyframes bosFloat {
+      0%,100% { transform:translateY(0); }
+      50%      { transform:translateY(-10px); }
+    }
+    @keyframes bosGlow {
+      0%,100% { text-shadow: 0 0 20px rgba(212,175,55,0.4), 0 0 60px rgba(212,175,55,0.2); }
+      50%      { text-shadow: 0 0 40px rgba(212,175,55,0.7), 0 0 80px rgba(212,175,55,0.35); }
+    }
+    @keyframes bosShimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes bosDotsMove {
+      0%   { background-position: 0 0; }
+      100% { background-position: 40px 40px; }
+    }
+    @keyframes bosBulletPop {
+      0%   { opacity:0; transform:translateX(-20px); }
+      100% { opacity:1; transform:translateX(0); }
+    }
+    @keyframes bosFeaturePop {
+      0%   { opacity:0; transform:translateY(20px) scale(0.9); }
+      100% { opacity:1; transform:translateY(0) scale(1); }
+    }
+    @keyframes bosCountUp {
+      0%   { opacity:0; transform:scale(0.7); }
+      70%  { transform:scale(1.08); }
+      100% { opacity:1; transform:scale(1); }
     }
 
-    .bosw-pill-merged {
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border-radius: 24px;
-      padding: 28px 32px;
+    .bosw-hero {
+      position: relative;
+      background: #0A0A0A;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.18);
-      border: 1px solid rgba(124,58,237,0.18);
-      min-width: 260px;
+      overflow: hidden;
+    }
+
+    /* Animated dot-grid background */
+    .bosw-hero::before {
+      content:'';
+      position:absolute; inset:0; z-index:0;
+      background-image: radial-gradient(circle, rgba(212,175,55,0.12) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: bosDotsMove 8s linear infinite;
+    }
+
+    /* Gold diagonal accent lines */
+    .bosw-hero::after {
+      content:'';
+      position:absolute; inset:0; z-index:0;
+      background: linear-gradient(135deg,
+        transparent 0%, transparent 45%,
+        rgba(212,175,55,0.04) 45%, rgba(212,175,55,0.04) 55%,
+        transparent 55%, transparent 100%
+      );
+    }
+
+    .bosw-hero-inner {
+      position: relative; z-index:2;
+      display: flex;
+      align-items: stretch;
+      min-height: 100vh;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 5%;
+    }
+
+    /* ── LEFT CONTENT ── */
+    .bosw-hero-left {
+      flex: 1 1 55%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 40px 60px 0;
+      gap: 0;
+    }
+
+    /* Finearn logo top */
+    .bosw-hero-logo {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 32px;
+      animation: bosHeroFadeUp 0.7s ease both;
+    }
+    .bosw-hero-logo img { height: 36px; width: auto; filter: brightness(0) invert(1); }
+
+    /* WELCOME TO line */
+    .bosw-hero-welcome {
+      font-size: clamp(11px,1.2vw,14px);
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      color: #FFFFFF;
+      text-transform: uppercase;
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 8px;
+      animation: bosHeroFadeUp 0.7s ease 0.15s both;
+    }
+    .bosw-hero-welcome::before,
+    .bosw-hero-welcome::after {
+      content:'';
+      flex: 0 0 30px; height: 1px;
+      background: linear-gradient(90deg, transparent, #D4AF37);
+    }
+    .bosw-hero-welcome::after {
+      background: linear-gradient(90deg, #D4AF37, transparent);
+    }
+
+    /* BOSS OF STOCK */
+    .bosw-hero-h1 {
+      font-size: clamp(2.8rem,7vw,6rem);
+      font-weight: 900;
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin-bottom: 0;
+      font-family: 'Inter',sans-serif;
+    }
+    .bosw-hero-h1-boss {
+      display: block;
+      background: linear-gradient(90deg, #D4AF37 0%, #FFE566 40%, #D4AF37 60%, #B8860B 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: bosHeroFadeUp 0.8s ease 0.25s both, bosShimmer 4s linear 1.5s infinite;
+    }
+    .bosw-hero-h1-of {
+      display: block;
+      background: linear-gradient(90deg, #D4AF37 0%, #FFE566 40%, #D4AF37 60%, #B8860B 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: bosHeroFadeUp 0.8s ease 0.35s both, bosShimmer 4s linear 1.7s infinite;
+    }
+    .bosw-hero-h1-stock {
+      display: block;
+      color: #FFFFFF;
+      animation: bosHeroFadeUp 0.8s ease 0.45s both;
+    }
+    .bosw-hero-h1-market {
+      display: block;
+      color: #FFFFFF;
+      animation: bosHeroFadeUp 0.8s ease 0.55s both;
+    }
+
+    /* LEARN • ANALYZE • GROW • SUCCEED */
+    .bosw-hero-bullets {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px;
+      margin-top: 18px; margin-bottom: 20px;
+      animation: bosHeroFadeUp 0.8s ease 0.7s both;
+    }
+    .bosw-hero-bullet {
+      font-size: clamp(11px,1.1vw,13px);
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .bosw-hero-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #D4AF37; flex-shrink:0;
+    }
+
+    /* Tagline box */
+    .bosw-hero-tagline {
+      display: inline-flex; align-items: center;
+      border: 1.5px solid #D4AF37;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-size: clamp(11px,1.1vw,13px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-bottom: 32px;
+      animation: bosHeroFadeUp 0.8s ease 0.85s both;
+    }
+    .bosw-hero-tagline-gold { color: #D4AF37; }
+
+    /* Feature icons row */
+    .bosw-hero-feats {
+      display: flex; flex-wrap: wrap; gap: 24px;
+      animation: bosHeroFadeUp 0.8s ease 1s both;
+    }
+    .bosw-hero-feat {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      flex: 0 0 auto;
+    }
+    .bosw-hero-feat-ico {
+      width: 52px; height: 52px;
+      background: rgba(212,175,55,0.12);
+      border: 1.5px solid rgba(212,175,55,0.3);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .bosw-hero-feat:hover .bosw-hero-feat-ico {
+      background: rgba(212,175,55,0.25);
+      border-color: #D4AF37;
+    }
+    .bosw-hero-feat-ico svg { width: 24px; height: 24px; }
+    .bosw-hero-feat-lbl {
+      font-size: 11px; font-weight: 800; color: #D4AF37;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      text-align: center; line-height: 1.2;
+      font-family: 'Inter',sans-serif;
+    }
+    .bosw-hero-feat-sub {
+      display: block; font-size: 10px; font-weight: 400;
+      color: rgba(255,255,255,0.6); text-transform: none;
+      letter-spacing: 0; margin-top: 1px;
+    }
+
+    /* ── RIGHT IMAGE ── */
+    .bosw-hero-right {
+      flex: 0 0 45%;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    /* Gold glow behind person */
+    .bosw-hero-right::before {
+      content:'';
+      position:absolute;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 80%; height: 80%;
+      background: radial-gradient(ellipse at center bottom, rgba(212,175,55,0.25) 0%, transparent 70%);
+      z-index:0;
+    }
+
+    .bosw-hero-person {
+      position: relative; z-index:1;
+      width: 100%; max-width: 520px;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      animation: bosHeroSlideLeft 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+      filter: drop-shadow(0 0 40px rgba(212,175,55,0.2));
+    }
+
+    /* Founder pill — bottom right of image */
+    .bosw-hero-pill {
+      position: absolute;
+      bottom: 36px; right: 0;
+      z-index: 10;
+      animation: bosFadeUp 0.9s ease 1.2s both;
+    }
+    .bosw-hero-pill-inner {
+      background: rgba(10,10,10,0.88);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1.5px solid #D4AF37;
+      border-radius: 16px;
+      padding: 20px 24px;
+      min-width: 240px;
+      display: flex; flex-direction: column; gap: 10px;
       animation: bosFloat 5s ease-in-out infinite;
     }
-
-    .bosw-pill-founder-row {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid rgba(124,58,237,0.18);
-    }
-
-    /* Name — letter-by-letter container */
-    .bosw-pill-name {
-      font-size: 20px; font-weight: 900; color: #1A1A2E;
-      font-family: 'Inter',sans-serif; line-height: 1.2;
+    .bosw-hero-pill-name {
+      font-size: 20px; font-weight: 900; color: #FFFFFF;
+      font-family: 'Inter',sans-serif; line-height: 1.1;
       display: flex; flex-wrap: wrap; gap: 0;
     }
-
-    /* Each letter */
-    .bosw-pill-name .bosw-letter {
-      display: inline-block;
-      opacity: 0;
+    .bosw-hero-pill-name .bosw-letter {
+      display: inline-block; opacity:0;
       animation: bosLetterPop 0.5s cubic-bezier(0.22,1,0.36,1) both;
     }
-
-    /* Space between first and last name */
-    .bosw-pill-name .bosw-space {
-      display: inline-block;
-      width: 7px;
-    }
-
-    @keyframes bosLetterPop {
-      0%   { opacity: 0; transform: translateY(22px) scale(0.78); filter: blur(6px); }
-      55%  { opacity: 1; transform: translateY(-5px) scale(1.12); filter: blur(0); }
-      75%  { transform: translateY(2px) scale(0.96); }
-      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-    }
-
-    @keyframes bosFadeUp {
-      0%   { opacity: 0; transform: translateY(28px) scale(0.92); filter: blur(4px); }
-      60%  { opacity: 1; transform: translateY(-4px) scale(1.03); filter: blur(0); }
-      80%  { transform: translateY(2px) scale(0.99); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @keyframes bosFloat {
-      0%,100% { transform: translateY(0); }
-      50%      { transform: translateY(-10px); }
-    }
-
-    .bosw-pill-role {
-      font-size: 11px; font-weight: 700; color: #7C3AED;
-      font-family: 'Inter',sans-serif; text-transform: uppercase; letter-spacing: 0.12em;
-      animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 1.6s both;
-    }
-
-    .bosw-pill-brand {
-      font-size: 12px; font-weight: 500; color: #64748B;
+    .bosw-hero-pill-name .bosw-space { display:inline-block; width:7px; }
+    .bosw-hero-pill-role {
+      font-size: 10px; font-weight: 700; color: #D4AF37;
+      text-transform: uppercase; letter-spacing: 0.14em;
       font-family: 'Inter',sans-serif;
-      animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 1.9s both;
     }
-
-    /* Social row — no label */
-    .bosw-pill-social-row {
+    .bosw-hero-pill-divider {
+      width: 100%; height: 1px;
+      background: rgba(212,175,55,0.25);
+    }
+    .bosw-hero-pill-social {
       display: flex; align-items: center; gap: 12px;
-      animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 2.1s both;
-      opacity: 0;
+    }
+    .bosw-hero-pill-soc {
+      width: 34px; height: 34px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; flex-shrink:0;
+    }
+    .bosw-hero-pill-soc--yt { background: #FF0000; }
+    .bosw-hero-pill-soc--ig { background: linear-gradient(135deg,#f09433 0%,#dc2743 50%,#bc1888 100%); }
+    .bosw-hero-pill-soc svg { width: 16px; height: 16px; display:block; }
+    .bosw-hero-pill-divv {
+      width: 1px; height: 32px;
+      background: rgba(212,175,55,0.35); flex-shrink:0;
+    }
+    .bosw-hero-pill-follow { display: flex; flex-direction: column; }
+    .bosw-hero-pill-flbl {
+      font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.6);
+      text-transform: uppercase; letter-spacing: 0.1em; font-family:'Inter',sans-serif;
+    }
+    .bosw-hero-pill-fnum {
+      font-size: 22px; font-weight: 900; color: #D4AF37;
+      font-family:'Inter',sans-serif; line-height:1.1;
+      animation: bosCountUp 0.8s ease 1.8s both;
     }
 
-    .bosw-pill-soc-ico {
-      width: 34px; height: 34px; border-radius: 9px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .bosw-pill-soc-ico--yt { background: #FF0000; }
-    .bosw-pill-soc-ico--ig { background: linear-gradient(135deg,#f09433 0%,#dc2743 50%,#bc1888 100%); }
-    .bosw-pill-soc-ico svg { width: 16px; height: 16px; display: block; }
-
-    .bosw-pill-count { display: flex; flex-direction: column; }
-
-    .bosw-pill-count-num {
-      font-size: 22px; font-weight: 900; color: #1A1A2E;
-      font-family: 'Inter',sans-serif; line-height: 1.1;
-      animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 2.3s both;
-      opacity: 0;
-    }
-    .bosw-pill-count-lbl {
-      font-size: 10px; font-weight: 600; color: #7C3AED;
-      font-family: 'Inter',sans-serif; text-transform: uppercase; letter-spacing: 0.06em;
-      animation: bosFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 2.4s both;
-      opacity: 0;
-    }
-
-    /* ── HERO LEFT ── */
-    .bosw-hero-left { background: #F9F7FF; padding: 40px max(24px,5vw) 48px; text-align: center; display: flex; flex-direction: column; align-items: center; }
-    .bosw-h1 { font-size: clamp(1.5rem,3.5vw,2.6rem); font-weight: 900; line-height: 1.2; color: #1A1A2E; margin-bottom: 14px; font-family: 'Inter',sans-serif; }
+    /* old classes kept as stubs so nothing else breaks */
+    .bosw-pills { display:none; }
     .bosw-accent { color: #7C3AED; }
-    .bosw-sub { font-size: clamp(0.9rem,1.4vw,1rem); color: #64748B; line-height: 1.7; max-width: 560px; margin-bottom: 28px; font-family: 'Inter',sans-serif; }
-    .bosw-feats { display: flex; flex-wrap: wrap; gap: 12px 20px; justify-content: center; }
-    .bosw-feat { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
-    .bosw-feat-ico { width: 34px; height: 34px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 2px 8px rgba(124,58,237,0.13); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .bosw-feat-ico svg { width: 16px; height: 16px; color: #7C3AED; }
-    .bosw-feat-lbl { font-size: 12px; font-weight: 700; line-height: 1.3; color: #1A1A2E; font-family: 'Inter',sans-serif; }
-    .bosw-feat-lbl-sub { display: block; font-weight: 400; color: #64748B; font-size: 11px; }
+    .bosw-h1, .bosw-sub, .bosw-feats, .bosw-feat, .bosw-feat-ico, .bosw-feat-lbl, .bosw-feat-lbl-sub { display:none; }
 
     .spectre .navbar .navbar-section:not(:first-child):last-child { display: none; }
 
@@ -274,20 +476,33 @@
       .bosw-crs-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
       .bosw-testi-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
     }
+    @media (max-width: 860px) {
+      .bosw-hero-inner { flex-direction: column; padding: 0; min-height: auto; }
+      .bosw-hero-left { padding: 48px 5% 24px; flex: none; }
+      .bosw-hero-right { flex: none; width: 100%; min-height: 380px; }
+      .bosw-hero-person { max-width: 320px; margin: 0 auto; }
+      .bosw-hero-pill { bottom: 16px; right: 5%; }
+      .bosw-hero-pill-inner { min-width: 200px; padding: 14px 18px; }
+      .bosw-hero-h1 { font-size: clamp(2.2rem,9vw,3.5rem); }
+    }
     @media (max-width: 600px) {
-      .bosw-hero-img-wrap { height: 130vw; min-height: 420px; }
-      .bosw-pills { left: 3%; top: 68%; }
-      .bosw-pill-merged { padding: 12px 14px; min-width: 150px; gap: 10px; border-radius: 16px; }
-      .bosw-pill-name { font-size: 13px; }
-      .bosw-pill-count-num { font-size: 14px; }
-      .bosw-pill-role { font-size: 9px; }
-      .bosw-pill-brand { font-size: 10px; }
-      .bosw-pill-count-lbl { font-size: 8px; }
-      .bosw-pill-soc-ico { width: 24px; height: 24px; border-radius: 6px; }
-      .bosw-pill-soc-ico svg { width: 12px; height: 12px; }
-      .bosw-pill-founder-row { padding-bottom: 10px; gap: 3px; }
-      .bosw-pill-social-row { gap: 8px; }
-      .bosw-hero-left { padding: 28px 20px 36px; }
+      .bosw-hero-left { padding: 32px 5% 16px; gap: 0; }
+      .bosw-hero-logo img { height: 28px; }
+      .bosw-hero-feats { gap: 14px; }
+      .bosw-hero-feat-ico { width: 40px; height: 40px; }
+      .bosw-hero-feat-ico svg { width: 18px; height: 18px; }
+      .bosw-hero-feat-lbl { font-size: 10px; }
+      .bosw-hero-feat-sub { font-size: 9px; }
+      .bosw-hero-pill { right: 3%; bottom: 10px; }
+      .bosw-hero-pill-inner { min-width: 170px; padding: 10px 14px; gap: 7px; }
+      .bosw-hero-pill-name { font-size: 15px; }
+      .bosw-hero-pill-role { font-size: 8px; }
+      .bosw-hero-pill-fnum { font-size: 17px; }
+      .bosw-hero-pill-soc { width: 26px; height: 26px; }
+      .bosw-hero-person { max-width: 260px; }
+      .bosw-hero-tagline { font-size: 10px; padding: 8px 14px; }
+      .bosw-hero-right { min-height: 300px; }
+      .bosw-hero-left { /* no extra override needed */ }
       .bosw-ben-in { flex-direction: column; gap: 28px; }
       .bosw-ben-hd { flex: none; width: 100%; }
       .bosw-ben-grid { grid-template-columns: repeat(2,1fr); width: 100%; }
@@ -309,82 +524,116 @@
 
   <!-- HERO -->
   <div class="bosw-hero">
-    <div class="bosw-hero-img-wrap">
-      <img class="bosw-hero-img" src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/DSC09450(2).jpg" alt="Sarang Yadav – Founder, Boss of Stock" />
+    <div class="bosw-hero-inner">
 
-      <!-- MERGED PILL -->
-      <div class="bosw-pills">
-        <div class="bosw-pill-merged">
+      <!-- LEFT CONTENT -->
+      <div class="bosw-hero-left">
 
-          <!-- Founder info -->
-          <div class="bosw-pill-founder-row">
-            <div class="bosw-pill-name">
-              <!-- S a r a n g -->
-              <span class="bosw-letter" style="animation-delay:0.10s">S</span>
-              <span class="bosw-letter" style="animation-delay:0.18s">a</span>
-              <span class="bosw-letter" style="animation-delay:0.26s">r</span>
-              <span class="bosw-letter" style="animation-delay:0.34s">a</span>
-              <span class="bosw-letter" style="animation-delay:0.42s">n</span>
-              <span class="bosw-letter" style="animation-delay:0.50s">g</span>
+        <!-- Logo -->
+        <div class="bosw-hero-logo">
+          <img src="https://d502jbuhuh9wk.cloudfront.net/logos/67b724ef20113055dd8f5b0c.png?v=4" alt="Finearn" />
+        </div>
+
+        <!-- Welcome To -->
+        <div class="bosw-hero-welcome">Welcome To</div>
+
+        <!-- Big Title -->
+        <div class="bosw-hero-h1">
+          <span class="bosw-hero-h1-boss">Boss of</span>
+          <span class="bosw-hero-h1-stock">Stock</span>
+          <span class="bosw-hero-h1-market">Market</span>
+        </div>
+
+        <!-- Bullets -->
+        <div class="bosw-hero-bullets">
+          <span class="bosw-hero-bullet">Learn</span>
+          <span class="bosw-hero-dot"></span>
+          <span class="bosw-hero-bullet">Analyze</span>
+          <span class="bosw-hero-dot"></span>
+          <span class="bosw-hero-bullet">Grow</span>
+          <span class="bosw-hero-dot"></span>
+          <span class="bosw-hero-bullet">Succeed</span>
+        </div>
+
+        <!-- Tagline -->
+        <div class="bosw-hero-tagline">
+          The Stock Market Isn't Luck,&nbsp;<span class="bosw-hero-tagline-gold">It's Knowledge.</span>
+        </div>
+
+        <!-- Feature icons -->
+        <div class="bosw-hero-feats">
+          <div class="bosw-hero-feat" style="animation: bosFeaturePop 0.6s ease 1.1s both;">
+            <div class="bosw-hero-feat-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M8 7h8M8 11h5"/></svg>
+            </div>
+            <span class="bosw-hero-feat-lbl">Learn<span class="bosw-hero-feat-sub">From Basics to Advanced</span></span>
+          </div>
+          <div class="bosw-hero-feat" style="animation: bosFeaturePop 0.6s ease 1.25s both;">
+            <div class="bosw-hero-feat-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><polyline points="11 8 11 11 13 13"/></svg>
+            </div>
+            <span class="bosw-hero-feat-lbl">Analyze<span class="bosw-hero-feat-sub">Market Trends &amp; Opportunities</span></span>
+          </div>
+          <div class="bosw-hero-feat" style="animation: bosFeaturePop 0.6s ease 1.4s both;">
+            <div class="bosw-hero-feat-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/><polyline points="18 5 22 1 22 5"/></svg>
+            </div>
+            <span class="bosw-hero-feat-lbl">Grow<span class="bosw-hero-feat-sub">Build Wealth Step by Step</span></span>
+          </div>
+          <div class="bosw-hero-feat" style="animation: bosFeaturePop 0.6s ease 1.55s both;">
+            <div class="bosw-hero-feat-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <span class="bosw-hero-feat-lbl">Succeed<span class="bosw-hero-feat-sub">Discipline Today, Freedom Tomorrow</span></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT IMAGE + PILL -->
+      <div class="bosw-hero-right">
+        <img
+          class="bosw-hero-person"
+          src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/Gemini_Generated_Image_q5zblsq5zblsq5zb_1_-removebg-preview.png"
+          alt="Sarang Yadav – Founder, Boss of Stock Market"
+        />
+
+        <!-- Founder Pill -->
+        <div class="bosw-hero-pill">
+          <div class="bosw-hero-pill-inner">
+            <div class="bosw-hero-pill-name">
+              <span class="bosw-letter" style="animation-delay:1.3s">S</span>
+              <span class="bosw-letter" style="animation-delay:1.38s">a</span>
+              <span class="bosw-letter" style="animation-delay:1.46s">r</span>
+              <span class="bosw-letter" style="animation-delay:1.54s">a</span>
+              <span class="bosw-letter" style="animation-delay:1.62s">n</span>
+              <span class="bosw-letter" style="animation-delay:1.70s">g</span>
               <span class="bosw-space"></span>
-              <!-- Y a d a v -->
-              <span class="bosw-letter" style="animation-delay:0.62s">Y</span>
-              <span class="bosw-letter" style="animation-delay:0.70s">a</span>
-              <span class="bosw-letter" style="animation-delay:0.78s">d</span>
-              <span class="bosw-letter" style="animation-delay:0.86s">a</span>
-              <span class="bosw-letter" style="animation-delay:0.94s">v</span>
+              <span class="bosw-letter" style="animation-delay:1.80s">Y</span>
+              <span class="bosw-letter" style="animation-delay:1.88s">a</span>
+              <span class="bosw-letter" style="animation-delay:1.96s">d</span>
+              <span class="bosw-letter" style="animation-delay:2.04s">a</span>
+              <span class="bosw-letter" style="animation-delay:2.12s">v</span>
             </div>
-            <div class="bosw-pill-role">Founder</div>
-            <div class="bosw-pill-brand">Boss of Stock</div>
-          </div>
-
-          <!-- Social reach — no label, just icons + count -->
-          <div>
-            <div class="bosw-pill-social-row">
-              <div class="bosw-pill-soc-ico bosw-pill-soc-ico--yt">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path fill="#ffffff" d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                </svg>
+            <div class="bosw-hero-pill-role">Founder – Boss of Stock Market</div>
+            <div class="bosw-hero-pill-divider"></div>
+            <div class="bosw-hero-pill-social">
+              <div class="bosw-hero-pill-soc bosw-hero-pill-soc--yt">
+                <svg viewBox="0 0 24 24"><path fill="#fff" d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
               </div>
-              <div class="bosw-pill-soc-ico bosw-pill-soc-ico--ig">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path fill="#ffffff" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
+              <div class="bosw-hero-pill-soc bosw-hero-pill-soc--ig">
+                <svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </div>
-              <div class="bosw-pill-count">
-                <div class="bosw-pill-count-num">850K+</div>
-                <div class="bosw-pill-count-lbl">Followers</div>
+              <div class="bosw-hero-pill-divv"></div>
+              <div class="bosw-hero-pill-follow">
+                <span class="bosw-hero-pill-flbl">Followers</span>
+                <span class="bosw-hero-pill-fnum">850,000+</span>
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
-        </div>
-      </div>
-    </div>
-
-    <div class="bosw-hero-left">
-      <div class="bosw-h1">
-        Master The <span class="bosw-accent">Markets</span><br>&amp; Invest In Your Future
-      </div>
-      <div class="bosw-sub">Learn from market experts and trade &amp; invest with confidence.</div>
-      <div class="bosw-feats">
-        <div class="bosw-feat">
-          <div class="bosw-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg></div>
-          <div class="bosw-feat-lbl">Live Classes<span class="bosw-feat-lbl-sub">&amp; Recordings</span></div>
-        </div>
-        <div class="bosw-feat">
-          <div class="bosw-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-          <div class="bosw-feat-lbl">Expert<span class="bosw-feat-lbl-sub">Mentorship</span></div>
-        </div>
-        <div class="bosw-feat">
-          <div class="bosw-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-          <div class="bosw-feat-lbl">Practical<span class="bosw-feat-lbl-sub">Strategies</span></div>
-        </div>
-        <div class="bosw-feat">
-          <div class="bosw-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
-          <div class="bosw-feat-lbl">Certificate of<span class="bosw-feat-lbl-sub">Completion</span></div>
-        </div>
-      </div>
     </div>
   </div>
 
