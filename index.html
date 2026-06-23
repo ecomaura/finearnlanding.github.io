@@ -146,19 +146,21 @@
 
     /* BOSS OF STOCK MARKET */
     .bosw-hero-h1 {
-      font-size: clamp(2.4rem,5.5vw,5rem);
+      font-size: clamp(2rem,4.8vw,4.4rem);
       font-weight: 900;
-      line-height: 0.95;
+      line-height: 1.05;
       text-transform: uppercase;
       margin-bottom: 0;
       font-family: 'Inter',sans-serif;
       display: flex;
       flex-direction: column;
+      overflow: visible;
     }
     /* Line 1: BOSS OF STOCK — all gold, nowrap */
     .bosw-hero-h1-line1 {
       display: block;
       white-space: nowrap;
+      padding-bottom: 4px;
       background: linear-gradient(90deg, #D4AF37 0%, #FFE566 40%, #D4AF37 60%, #B8860B 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
@@ -176,21 +178,22 @@
 
     /* LEARN • ANALYZE • GROW • SUCCEED */
     .bosw-hero-bullets {
-      display: flex; flex-wrap: nowrap; align-items: center; gap: 0 10px;
-      margin-top: 18px; margin-bottom: 20px;
+      display: flex; flex-wrap: nowrap; align-items: center; gap: 0 7px;
+      margin-top: 16px; margin-bottom: 18px;
       animation: bosHeroFadeUp 0.8s ease 0.7s both;
       white-space: nowrap;
+      overflow: hidden;
     }
     .bosw-hero-bullet {
-      font-size: clamp(10px,1vw,13px);
+      font-size: clamp(8px,0.75vw,10px);
       font-weight: 800;
       color: #FFFFFF;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       flex-shrink: 0;
     }
     .bosw-hero-dot {
-      width: 5px; height: 5px; border-radius: 50%;
+      width: 4px; height: 4px; border-radius: 50%;
       background: #D4AF37; flex-shrink: 0;
     }
 
@@ -288,7 +291,7 @@
 
     .bosw-hero-person {
       position: relative; z-index:1;
-      width: 100%; max-width: 460px;
+      width: 90%; max-width: 360px;
       height: auto;
       object-fit: contain;
       display: block;
