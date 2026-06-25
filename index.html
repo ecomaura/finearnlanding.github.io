@@ -242,7 +242,13 @@
       display:flex; flex-direction:column; gap:4px;
       animation:nhFadeUp .6s ease both;
     }
-    .nh-pill-name    { font-size:14px; font-weight:800; color:#FFFFFF; line-height:1.3; }
+    .nh-pill-hosted-by { font-size:10px; font-weight:700; color:#64748B; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px; }
+    .nh-pill-hosted-row { display:flex; align-items:center; gap:10px; margin-bottom:2px; }
+    .nh-pill-ava {
+      width:44px; height:44px; border-radius:50%; flex-shrink:0;
+      overflow:hidden; border:2px solid #7C3AED;
+    }
+    .nh-pill-ava img { width:100%; height:100%; object-fit:cover; display:block; }
     .nh-pill-role    { font-size:10px; font-weight:700; color:#A78BFA; text-transform:uppercase; letter-spacing:.1em; }
     .nh-pill-divider { height:1px; background:#3D2C7A; margin:8px 0; }
     .nh-pill-social  { display:flex; align-items:center; gap:8px; }
@@ -267,6 +273,10 @@
       .nh-h1    { font-size:clamp(1.8rem,8.5vw,2.8rem); }
       .nh-pill-row { flex-direction:column; }
       .nh-video-wrap { border-radius:12px; }
+      .nh-sub { font-size:11px; line-height:1.6; margin-bottom:14px; }
+      .nh-check { font-size:11px; gap:8px; }
+      .nh-check-ico { width:17px; height:17px; margin-top:1px; }
+      .nh-checks { gap:9px; margin-bottom:18px; }
     }
 
         /* stub old classes */
@@ -513,20 +523,6 @@
           </li>
         </ul>
 
-        <!-- Hosted by -->
-        <div class="nh-host">
-          <div class="nh-host-ava">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          </div>
-          <div class="nh-host-info">
-            <span class="nh-host-by">Hosted by</span>
-            <span class="nh-host-name">Sarang Yadav</span>
-            <span class="nh-host-role">Founder — Boss of Stock Market</span>
-          </div>
-        </div>
-
-        <div class="nh-footnote">Learn • Analyze • Grow • Succeed &nbsp;|&nbsp; 850K+ Followers</div>
-
         <!-- CTA -->
         <div class="nh-cta-wrap">
           <a class="nh-cta" href="#courses">
@@ -563,11 +559,19 @@
           </div>
         </div>
 
-        <!-- Founder pill row below video -->
+        <!-- Hosted by pill below video -->
         <div class="nh-pill-row">
           <div class="nh-pill" style="animation-delay:.7s">
-            <div class="nh-pill-name">Sarang Yadav</div>
-            <div class="nh-pill-role">Founder — Boss of Stock</div>
+            <div class="nh-pill-hosted-by">Hosted by</div>
+            <div class="nh-pill-hosted-row">
+              <div class="nh-pill-ava">
+                <img src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/DSC09450(2).jpg" alt="Sarang Yadav" />
+              </div>
+              <div>
+                <div class="nh-pill-name">Sarang Yadav</div>
+                <div class="nh-pill-role">Founder — Boss of Stock Market</div>
+              </div>
+            </div>
             <div class="nh-pill-divider"></div>
             <div class="nh-pill-social">
               <div class="nh-pill-soc nh-pill-soc--yt">
