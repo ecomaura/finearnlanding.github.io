@@ -109,10 +109,10 @@
     /* checklist */
     .nh-checks { list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:12px; }
     .nh-check {
-      display:flex; align-items:flex-start; gap:10px;
-      font-size:clamp(12px,1.1vw,13.5px); color:#CBD5E1; line-height:1.55;
-      opacity:0; animation:nhFadeUp .5s ease both;
-    }
+  display:flex; align-items:center; gap:10px; flex-wrap:nowrap;
+  font-size:clamp(12px,1.1vw,13.5px); color:#CBD5E1; line-height:1.55;
+  opacity:0; animation:nhFadeUp .5s ease both;
+}
     .nh-check strong { color:#FFFFFF; }
     .nh-check-ico {
       flex-shrink:0; width:20px; height:20px; border-radius:50%;
@@ -276,7 +276,7 @@
       .nh-video-wrap { border-radius:12px; }
       .nh-sub { font-size:11px; line-height:1.6; margin-bottom:14px; }
       .nh-checks { gap:8px; margin-bottom:16px; }
-  .nh-check { font-size:12px; gap:8px; line-height:1.45; align-items:flex-start; }
+  .nh-check { font-size:12px; gap:8px; line-height:1.4; align-items:center; flex-wrap:nowrap; }
   .nh-check-ico { width:16px; height:16px; min-width:16px; margin-top:2px; }
   .nh-check-ico svg { width:9px; height:9px; }
   .nh-check strong { font-weight:700; }
