@@ -13,357 +13,273 @@
     .bosw img { display: block; max-width: 100%; }
     .bosw { font-family: 'Inter', sans-serif; background: #FFFFFF; color: #1A1A2E; overflow-x: clip; }
 
-    /* ── HERO (NEW DARK GOLD DESIGN) ── */
-    @keyframes bosHeroFadeUp {
-      0%   { opacity:0; transform:translateY(40px); }
-      100% { opacity:1; transform:translateY(0); }
-    }
-    @keyframes bosHeroSlideLeft {
-      0%   { opacity:0; transform:translateX(60px); }
-      100% { opacity:1; transform:translateX(0); }
-    }
-    @keyframes bosLetterPop {
-      0%   { opacity:0; transform:translateY(22px) scale(0.78); filter:blur(6px); }
-      55%  { opacity:1; transform:translateY(-5px) scale(1.12); filter:blur(0); }
-      75%  { transform:translateY(2px) scale(0.96); }
-      100% { opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
-    }
-    @keyframes bosFadeUp {
-      0%   { opacity:0; transform:translateY(28px) scale(0.92); filter:blur(4px); }
-      60%  { opacity:1; transform:translateY(-4px) scale(1.03); filter:blur(0); }
-      80%  { transform:translateY(2px) scale(0.99); }
-      100% { opacity:1; transform:translateY(0) scale(1); }
-    }
-    @keyframes bosFloat {
-      0%,100% { transform:translateY(0); }
-      50%      { transform:translateY(-10px); }
-    }
-    @keyframes bosGlow {
-      0%,100% { text-shadow: 0 0 20px rgba(212,175,55,0.4), 0 0 60px rgba(212,175,55,0.2); }
-      50%      { text-shadow: 0 0 40px rgba(212,175,55,0.7), 0 0 80px rgba(212,175,55,0.35); }
-    }
-    @keyframes bosShimmer {
-      0%   { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
-    @keyframes bosDotsMove {
-      0%   { background-position: 0 0; }
-      100% { background-position: 40px 40px; }
-    }
-    @keyframes bosBulletPop {
-      0%   { opacity:0; transform:translateX(-20px); }
-      100% { opacity:1; transform:translateX(0); }
-    }
-    @keyframes bosFeaturePop {
-      0%   { opacity:0; transform:translateY(20px) scale(0.9); }
-      100% { opacity:1; transform:translateY(0) scale(1); }
-    }
-    @keyframes bosCountUp {
-      0%   { opacity:0; transform:scale(0.7); }
-      70%  { transform:scale(1.08); }
-      100% { opacity:1; transform:scale(1); }
-    }
+    /* ── HERO NEW ── */
+    @keyframes nhFadeUp   { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes nhSlideR   { from{opacity:0;transform:translateX(40px)} to{opacity:1;transform:translateX(0)} }
+    @keyframes nhPulse    { 0%,100%{opacity:1} 50%{opacity:.4} }
+    @keyframes nhCheckPop { 0%{opacity:0;transform:scale(0) rotate(-20deg)} 70%{transform:scale(1.15)} 100%{opacity:1;transform:scale(1) rotate(0)} }
+    @keyframes nhVideoGlow{ 0%,100%{box-shadow:0 0 24px rgba(124,58,237,.30),0 0 50px rgba(124,58,237,.12)} 50%{box-shadow:0 0 48px rgba(124,58,237,.55),0 0 90px rgba(124,58,237,.22)} }
+    @keyframes nhDots     { from{background-position:0 0} to{background-position:40px 40px} }
 
     .bosw-hero {
-      position: relative;
-      background: #0A0A0A;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
+      position:relative;
+      background:#0F0A2A;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
     }
-
-    /* Animated dot-grid background */
+    /* subtle dot grid matching learn section feel */
     .bosw-hero::before {
-      content:'';
-      position:absolute; inset:0; z-index:0;
-      background-image: radial-gradient(circle, rgba(212,175,55,0.12) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: bosDotsMove 8s linear infinite;
+      content:''; position:absolute; inset:0; z-index:0;
+      background-image:radial-gradient(circle,rgba(124,58,237,.13) 1px,transparent 1px);
+      background-size:38px 38px;
+      animation:nhDots 10s linear infinite;
     }
-
-    /* Gold diagonal accent lines */
+    /* purple radial glow top-right */
     .bosw-hero::after {
+      content:''; position:absolute; top:-10%; right:-10%; z-index:0;
+      width:60%; height:70%;
+      background:radial-gradient(ellipse at top right,rgba(124,58,237,.18) 0%,transparent 65%);
+      pointer-events:none;
+    }
+
+    /* ── INNER WRAPPER ── */
+    .nh-inner {
+      position:relative; z-index:2;
+      display:flex; align-items:center; gap:48px;
+      max-width:1280px; margin:0 auto; width:100%;
+      padding:60px 5% 56px;
+    }
+
+    /* ── LEFT ── */
+    .nh-left { flex:1 1 0; min-width:0; display:flex; flex-direction:column; }
+
+    /* badge */
+    .nh-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(124,58,237,.15); border:1px solid rgba(124,58,237,.35);
+      border-radius:50px; padding:6px 16px; width:fit-content;
+      font-size:11px; font-weight:800; color:#A78BFA;
+      letter-spacing:.1em; text-transform:uppercase;
+      margin-bottom:20px;
+      animation:nhFadeUp .6s ease both;
+    }
+    .nh-badge-dot { width:7px; height:7px; border-radius:50%; background:#7C3AED; animation:nhPulse 1.5s ease-in-out infinite; flex-shrink:0; }
+
+    /* logo */
+    .nh-logo { margin-bottom:16px; animation:nhFadeUp .6s ease .05s both; }
+    .nh-logo img { height:52px; width:auto; }
+
+    /* eyebrow */
+    .nh-eyebrow {
+      font-size:11px; font-weight:800; letter-spacing:.12em; color:#A78BFA;
+      text-transform:uppercase; margin-bottom:8px;
+      animation:nhFadeUp .6s ease .1s both;
+    }
+
+    /* headline */
+    .nh-h1 {
+      font-family:'Inter',sans-serif; font-weight:900; line-height:1.08;
+      font-size:clamp(2rem,4.2vw,4rem); text-transform:uppercase;
+      display:flex; flex-direction:column; margin-bottom:6px;
+    }
+    .nh-h1-gold {
+      display:block; white-space:nowrap; padding-bottom:3px;
+      color:#FFFFFF; -webkit-text-fill-color:#FFFFFF;
+      animation:nhFadeUp .7s ease .12s both;
+    }
+    .nh-h1-purple {
+      display:block; color:#7C3AED; -webkit-text-fill-color:#7C3AED;
+      animation:nhFadeUp .7s ease .22s both;
+    }
+
+    /* underline like other sections */
+    .nh-uline { width:36px; height:3px; background:#7C3AED; border-radius:2px; margin-bottom:20px; animation:nhFadeUp .6s ease .28s both; }
+
+    /* sub text */
+    .nh-sub {
+      font-size:clamp(13px,1.2vw,15px); color:#94A3B8; line-height:1.75;
+      max-width:500px; margin-bottom:20px;
+      animation:nhFadeUp .7s ease .32s both;
+    }
+    .nh-sub strong { color:#FFFFFF; }
+    .nh-sub-gold { color:#A78BFA; font-weight:600; }
+
+    /* checklist */
+    .nh-checks { list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:12px; }
+    .nh-check {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:clamp(12px,1.1vw,13.5px); color:#CBD5E1; line-height:1.55;
+      opacity:0; animation:nhFadeUp .5s ease both;
+    }
+    .nh-check strong { color:#FFFFFF; }
+    .nh-check-ico {
+      flex-shrink:0; width:20px; height:20px; border-radius:50%;
+      background:#7C3AED;
+      display:flex; align-items:center; justify-content:center; margin-top:1px;
+      animation:nhCheckPop .5s cubic-bezier(.22,1,.36,1) both;
+    }
+    .nh-check-ico svg { width:11px; height:11px; }
+
+    /* hosted by — matches bonus card style */
+    .nh-host {
+      display:flex; align-items:center; gap:14px;
+      background:#1C1040; border:1px solid #3D2C7A;
+      border-radius:14px; padding:14px 18px; width:fit-content;
+      animation:nhFadeUp .7s ease .9s both;
+      margin-bottom:12px;
+    }
+    .nh-host-ava {
+      width:48px; height:48px; border-radius:50%; overflow:hidden;
+      border:2px solid #7C3AED; flex-shrink:0; background:#0F0A2A;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .nh-host-ava svg { width:26px; height:26px; }
+    .nh-host-info { display:flex; flex-direction:column; gap:2px; }
+    .nh-host-by   { font-size:10px; font-weight:600; color:#64748B; text-transform:uppercase; letter-spacing:.08em; }
+    .nh-host-name { font-size:15px; font-weight:800; color:#FFFFFF; }
+    .nh-host-role { font-size:11px; color:#A78BFA; font-weight:600; }
+
+    /* footnote */
+    .nh-footnote {
+      font-size:11px; color:#475569; letter-spacing:.04em;
+      animation:nhFadeUp .7s ease 1.0s both;
+    }
+
+    /* CTA button */
+    @keyframes nhCtaPulse {
+      0%,100% { box-shadow: 0 4px 20px rgba(124,58,237,.5), 0 0 0 0 rgba(124,58,237,.4); }
+      50%      { box-shadow: 0 8px 32px rgba(124,58,237,.7), 0 0 0 10px rgba(124,58,237,.0); }
+    }
+    @keyframes nhCtaArrow {
+      0%,100% { transform: translateX(0); }
+      50%      { transform: translateX(5px); }
+    }
+    @keyframes nhCtaShine {
+      0%   { left: -75%; }
+      100% { left: 125%; }
+    }
+    .nh-cta-wrap {
+      display:flex; flex-direction:column; gap:8px;
+      animation:nhFadeUp .7s ease .95s both;
+      margin-bottom:14px;
+    }
+    .nh-cta {
+      display:inline-flex; align-items:center; gap:12px;
+      position:relative; overflow:hidden;
+      background:linear-gradient(135deg, #7C3AED 0%, #6D28D9 50%, #5B21B6 100%);
+      color:#FFFFFF !important;
+      font-size:16px; font-weight:800; font-family:'Inter',sans-serif;
+      letter-spacing:.06em; text-transform:uppercase;
+      padding:18px 36px; border-radius:50px;
+      width:fit-content;
+      text-decoration:none !important;
+      animation: nhCtaPulse 2s ease-in-out infinite;
+      transition: transform .18s, filter .18s;
+    }
+    .nh-cta:hover { transform:translateY(-3px) scale(1.03); filter:brightness(1.12); }
+    /* shine sweep */
+    .nh-cta::before {
       content:'';
-      position:absolute; inset:0; z-index:0;
-      background: linear-gradient(135deg,
-        transparent 0%, transparent 45%,
-        rgba(212,175,55,0.04) 45%, rgba(212,175,55,0.04) 55%,
-        transparent 55%, transparent 100%
-      );
+      position:absolute; top:0; left:-75%;
+      width:50%; height:100%;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      animation: nhCtaShine 2.4s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .nh-cta-icon-book { width:20px; height:20px; flex-shrink:0; }
+    .nh-cta-arrow {
+      width:20px; height:20px; flex-shrink:0;
+      animation: nhCtaArrow 1.2s ease-in-out infinite;
+    }
+    .nh-cta-sub {
+      font-size:11px; color:#64748B; letter-spacing:.04em;
+      padding-left:4px;
     }
 
-    .bosw-hero-inner {
-      position: relative; z-index:2;
-      display: flex;
-      align-items: stretch;
-      min-height: 100vh;
-      width: 100%;
-      overflow: hidden;
-      padding: 0 4%;
+    /* ── RIGHT ── */
+    .nh-right {
+      flex:0 0 44%; max-width:44%; min-width:0;
+      display:flex; flex-direction:column; gap:14px;
+      animation:nhSlideR .8s cubic-bezier(.22,1,.36,1) .2s both;
     }
 
-    /* ── LEFT CONTENT ── */
-    .bosw-hero-left {
-      flex: 0 0 62%;
-      max-width: 62%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 60px 28px 60px 0;
-      gap: 0;
-      min-width: 0;
+    /* Video player — border matches purple theme */
+    .nh-video-wrap {
+      position:relative; width:100%;
+      border-radius:16px; overflow:hidden;
+      border:1.5px solid #3D2C7A;
+      background:#1C1040; aspect-ratio:16/9;
+      animation:nhVideoGlow 4s ease-in-out 1s infinite;
+    }
+    .nh-video-wrap iframe {
+      position:absolute; inset:0; width:100%; height:100%; border:none; display:block;
+    }
+    .nh-play-overlay {
+      position:absolute; inset:0; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:12px;
+      background:linear-gradient(135deg,rgba(15,10,42,.85),rgba(28,16,64,.75));
+      cursor:pointer; transition:opacity .25s; z-index:3;
+    }
+    .nh-play-overlay.hidden { opacity:0; pointer-events:none; }
+    .nh-play-btn {
+      width:68px; height:68px; border-radius:50%;
+      background:#7C3AED;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 0 30px rgba(124,58,237,.60); transition:transform .2s,background .2s;
+    }
+    .nh-play-overlay:hover .nh-play-btn { transform:scale(1.08); background:#6D28D9; }
+    .nh-play-btn svg { width:28px; height:28px; margin-left:4px; }
+    .nh-play-label { font-size:12px; font-weight:700; color:#A78BFA; letter-spacing:.08em; text-transform:uppercase; }
+
+    /* Pill below video — matches 1C1040 card style */
+    .nh-pill-row { display:flex; gap:12px; flex-wrap:wrap; }
+    .nh-pill {
+      flex:1 1 0; min-width:0;
+      background:#1C1040; border:1px solid #3D2C7A;
+      border-radius:14px; padding:16px 18px;
+      display:flex; flex-direction:column; gap:4px;
+      animation:nhFadeUp .6s ease both;
+    }
+    .nh-pill-name    { font-size:14px; font-weight:800; color:#FFFFFF; line-height:1.3; }
+    .nh-pill-role    { font-size:10px; font-weight:700; color:#A78BFA; text-transform:uppercase; letter-spacing:.1em; }
+    .nh-pill-divider { height:1px; background:#3D2C7A; margin:8px 0; }
+    .nh-pill-social  { display:flex; align-items:center; gap:8px; }
+    .nh-pill-soc     { width:28px; height:28px; border-radius:7px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .nh-pill-soc--yt { background:#FF0000; }
+    .nh-pill-soc--ig { background:linear-gradient(135deg,#f09433,#dc2743 50%,#bc1888); }
+    .nh-pill-soc svg { width:13px; height:13px; display:block; }
+    .nh-pill-divv    { width:1px; height:26px; background:#3D2C7A; flex-shrink:0; }
+    .nh-pill-follow  { display:flex; flex-direction:column; }
+    .nh-pill-flbl    { font-size:9px; font-weight:600; color:#64748B; text-transform:uppercase; letter-spacing:.08em; }
+    .nh-pill-fnum    { font-size:16px; font-weight:900; color:#A78BFA; white-space:nowrap; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width:900px) {
+      .nh-inner { flex-direction:column; gap:32px; padding:40px 5% 36px; }
+      .nh-right { flex:none; max-width:100%; width:100%; }
+      .nh-h1    { font-size:clamp(2rem,7vw,3.4rem); }
+    }
+    @media (max-width:600px) {
+      .nh-inner { padding:28px 5% 28px; gap:24px; }
+      .nh-logo img { height:40px; }
+      .nh-h1    { font-size:clamp(1.8rem,8.5vw,2.8rem); }
+      .nh-pill-row { flex-direction:column; }
+      .nh-video-wrap { border-radius:12px; }
     }
 
-    /* Finearn logo top */
-    .bosw-hero-logo {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 32px;
-      animation: bosHeroFadeUp 0.7s ease both;
-    }
-    .bosw-hero-logo img { height: 56px; width: auto; }
-
-    /* WELCOME TO line */
-    .bosw-hero-welcome {
-      font-size: clamp(11px,1.2vw,14px);
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      color: #FFFFFF;
-      text-transform: uppercase;
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 8px;
-      animation: bosHeroFadeUp 0.7s ease 0.15s both;
-    }
-    .bosw-hero-welcome::before,
-    .bosw-hero-welcome::after {
-      content:'';
-      flex: 0 0 30px; height: 1px;
-      background: linear-gradient(90deg, transparent, #D4AF37);
-    }
-    .bosw-hero-welcome::after {
-      background: linear-gradient(90deg, #D4AF37, transparent);
-    }
-
-    /* BOSS OF STOCK MARKET */
-    .bosw-hero-h1 {
-      font-size: clamp(2.2rem,4.8vw,4.6rem);
-      font-weight: 900;
-      line-height: 1.1;
-      text-transform: uppercase;
-      margin-bottom: 0;
-      font-family: 'Inter',sans-serif;
-      display: flex;
-      flex-direction: column;
-      overflow: visible;
-    }
-    /* Line 1: BOSS OF STOCK — all gold, nowrap */
-    .bosw-hero-h1-line1 {
-      display: block;
-      white-space: nowrap;
-      padding-bottom: 4px;
-      background: linear-gradient(90deg, #D4AF37 0%, #FFE566 40%, #D4AF37 60%, #B8860B 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: bosHeroFadeUp 0.8s ease 0.25s both, bosShimmer 4s linear 1.5s infinite;
-    }
-    /* Line 2: MARKET — white */
-    .bosw-hero-h1-line2 {
-      display: block;
-      color: #FFFFFF;
-      -webkit-text-fill-color: #FFFFFF;
-      animation: bosHeroFadeUp 0.8s ease 0.45s both;
-    }
-
-    /* LEARN • ANALYZE • GROW • SUCCEED */
-    .bosw-hero-bullets {
-      display: flex; flex-wrap: nowrap; align-items: center; gap: 0 6px;
-      margin-top: 16px; margin-bottom: 18px;
-      animation: bosHeroFadeUp 0.8s ease 0.7s both;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-    .bosw-hero-bullet {
-      font-size: 11px;
-      font-weight: 800;
-      color: #FFFFFF;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      flex-shrink: 0;
-    }
-    .bosw-hero-dot {
-      width: 4px; height: 4px; border-radius: 50%;
-      background: #D4AF37; flex-shrink: 0;
-    }
-
-    /* Tagline box — fits text width */
-    .bosw-hero-tagline {
-      display: inline-flex; align-items: center;
-      align-self: flex-start;
-      width: fit-content;
-      border: 1.5px solid #D4AF37;
-      border-radius: 6px;
-      padding: 10px 20px;
-      font-size: clamp(11px,1.1vw,13px);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #FFFFFF;
-      white-space: nowrap;
-      margin-bottom: 32px;
-      animation: bosHeroFadeUp 0.8s ease 0.85s both;
-    }
-    .bosw-hero-tagline-gold { color: #D4AF37; }
-
-    /* Feature icons row */
-    .bosw-hero-feats {
-      display: flex; flex-wrap: wrap; gap: 24px;
-      animation: bosHeroFadeUp 0.8s ease 1s both;
-    }
-    .bosw-hero-feat {
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      flex: 0 0 auto;
-    }
-    .bosw-hero-feat-ico {
-      width: 52px; height: 52px;
-      background: rgba(212,175,55,0.12);
-      border: 1.5px solid rgba(212,175,55,0.3);
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .bosw-hero-feat:hover .bosw-hero-feat-ico {
-      background: rgba(212,175,55,0.25);
-      border-color: #D4AF37;
-    }
-    .bosw-hero-feat-ico svg { width: 24px; height: 24px; }
-    .bosw-hero-feat-lbl {
-      font-size: 11px; font-weight: 800; color: #D4AF37;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      text-align: center; line-height: 1.2;
-      font-family: 'Inter',sans-serif;
-    }
-    .bosw-hero-feat-sub {
-      display: block; font-size: 10px; font-weight: 400;
-      color: rgba(255,255,255,0.6); text-transform: none;
-      letter-spacing: 0; margin-top: 1px;
-    }
-
-    /* ── RIGHT IMAGE ── */
-    .bosw-hero-right {
-      flex: 0 0 38%;
-      max-width: 38%;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      overflow: visible;
-    }
-
-    /* Gold glow layers behind person */
-    .bosw-hero-right::before {
-      content:'';
-      position:absolute;
-      bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 90%; height: 90%;
-      background:
-        radial-gradient(ellipse at 50% 80%, rgba(212,175,55,0.45) 0%, transparent 55%),
-        radial-gradient(ellipse at 50% 50%, rgba(212,175,55,0.18) 0%, transparent 75%);
-      z-index:0;
-      pointer-events: none;
-    }
-    /* Extra ambient halo */
-    .bosw-hero-right::after {
-      content:'';
-      position:absolute;
-      top: 10%; left: 50%; transform: translateX(-50%);
-      width: 70%; height: 80%;
-      background: radial-gradient(ellipse at 50% 40%, rgba(255,200,50,0.10) 0%, transparent 65%);
-      z-index:0;
-      pointer-events: none;
-    }
-
-    @keyframes bosPersonGlow {
-      0%,100% { filter: drop-shadow(0 0 30px rgba(212,175,55,0.45)) drop-shadow(0 0 80px rgba(212,175,55,0.2)); }
-      50%      { filter: drop-shadow(0 0 55px rgba(212,175,55,0.70)) drop-shadow(0 0 120px rgba(212,175,55,0.32)); }
-    }
-
-    .bosw-hero-person {
-      position: relative; z-index:1;
-      width: 100%; max-width: 240px;
-      height: auto;
-      object-fit: contain;
-      display: block;
-      animation: bosHeroSlideLeft 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s both, bosPersonGlow 4s ease-in-out 1.5s infinite;
-    }
-
-    /* Founder pill — bottom right, stays inside viewport */
-    .bosw-hero-pill {
-      position: absolute;
-      bottom: 36px; right: 4px;
-      z-index: 10;
-      animation: bosFadeUp 0.9s ease 1.2s both;
-    }
-    .bosw-hero-pill-inner {
-      background: rgba(10,10,10,0.88);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border: 1.5px solid #D4AF37;
-      border-radius: 16px;
-      padding: 16px 20px;
-      min-width: 220px;
-      max-width: 250px;
-      display: flex; flex-direction: column; gap: 10px;
-      animation: bosFloat 5s ease-in-out infinite;
-    }
-    .bosw-hero-pill-name {
-      font-size: 20px; font-weight: 900; color: #FFFFFF;
-      font-family: 'Inter',sans-serif; line-height: 1.1;
-      display: flex; flex-wrap: wrap; gap: 0;
-    }
-    .bosw-hero-pill-name .bosw-letter {
-      display: inline-block; opacity:0;
-      animation: bosLetterPop 0.5s cubic-bezier(0.22,1,0.36,1) both;
-    }
-    .bosw-hero-pill-name .bosw-space { display:inline-block; width:7px; }
-    .bosw-hero-pill-role {
-      font-size: 10px; font-weight: 700; color: #D4AF37;
-      text-transform: uppercase; letter-spacing: 0.14em;
-      font-family: 'Inter',sans-serif;
-    }
-    .bosw-hero-pill-divider {
-      width: 100%; height: 1px;
-      background: rgba(212,175,55,0.25);
-    }
-    .bosw-hero-pill-social {
-      display: flex; align-items: center; gap: 12px;
-    }
-    .bosw-hero-pill-soc {
-      width: 34px; height: 34px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; flex-shrink:0;
-    }
-    .bosw-hero-pill-soc--yt { background: #FF0000; }
-    .bosw-hero-pill-soc--ig { background: linear-gradient(135deg,#f09433 0%,#dc2743 50%,#bc1888 100%); }
-    .bosw-hero-pill-soc svg { width: 16px; height: 16px; display:block; }
-    .bosw-hero-pill-divv {
-      width: 1px; height: 32px;
-      background: rgba(212,175,55,0.35); flex-shrink:0;
-    }
-    .bosw-hero-pill-follow { display: flex; flex-direction: column; }
-    .bosw-hero-pill-flbl {
-      font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.6);
-      text-transform: uppercase; letter-spacing: 0.1em; font-family:'Inter',sans-serif;
-    }
-    .bosw-hero-pill-fnum {
-      font-size: 16px; font-weight: 900; color: #D4AF37;
-      font-family:'Inter',sans-serif; line-height:1.1; white-space: nowrap;
-      animation: bosCountUp 0.8s ease 1.8s both;
-    }
-
-    /* old classes kept as stubs so nothing else breaks */
-    .bosw-pills { display:none; }
-    .bosw-accent { color: #7C3AED; }
-    .bosw-h1, .bosw-sub, .bosw-feats, .bosw-feat, .bosw-feat-ico, .bosw-feat-lbl, .bosw-feat-lbl-sub { display:none; }
+        /* stub old classes */
+    .bosw-pills,.bosw-hero-inner,.bosw-hero-left,.bosw-hero-right,
+    .bosw-hero-logo,.bosw-hero-welcome,.bosw-hero-h1,.bosw-hero-h1-line1,
+    .bosw-hero-h1-line2,.bosw-hero-bullets,.bosw-hero-bullet,.bosw-hero-dot,
+    .bosw-hero-tagline,.bosw-hero-feats,.bosw-hero-feat,.bosw-hero-feat-ico,
+    .bosw-hero-feat-lbl,.bosw-hero-feat-sub,.bosw-hero-person,.bosw-hero-pill,
+    .bosw-hero-pill-inner,.bosw-hero-pill-name,.bosw-hero-pill-role,
+    .bosw-hero-pill-divider,.bosw-hero-pill-social,.bosw-hero-pill-soc,
+    .bosw-hero-pill-soc--yt,.bosw-hero-pill-soc--ig,.bosw-hero-pill-divv,
+    .bosw-hero-pill-follow,.bosw-hero-pill-flbl,.bosw-hero-pill-fnum { display:none; }
+    .bosw-accent { color:#7C3AED; }
 
     .spectre .navbar .navbar-section:not(:first-child):last-child { display: none; }
 
@@ -545,116 +461,149 @@
 
   <!-- HERO -->
   <div class="bosw-hero">
-    <div class="bosw-hero-inner">
+    <div class="nh-inner">
 
-      <!-- LEFT CONTENT -->
-      <div class="bosw-hero-left">
+      <!-- LEFT -->
+      <div class="nh-left">
+
+        <!-- Badge -->
+        <div class="nh-badge" style="animation-delay:.0s">
+          <span class="nh-badge-dot"></span>
+          Live &amp; Recorded Classes Available
+        </div>
 
         <!-- Logo -->
-        <div class="bosw-hero-logo">
+        <div class="nh-logo">
           <img src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/half_logo_black-removebg-preview.png" alt="Finearn" />
         </div>
 
-        <!-- Welcome To -->
-        <div class="bosw-hero-welcome">Welcome To</div>
+        <!-- Eyebrow -->
+        <div class="nh-eyebrow">Welcome to</div>
 
-        <!-- Big Title -->
-        <div class="bosw-hero-h1">
-          <span class="bosw-hero-h1-line1">Boss of Stock</span>
-          <span class="bosw-hero-h1-line2">Market</span>
+        <!-- Headline -->
+        <div class="nh-h1">
+          <span class="nh-h1-gold">Boss of Stock</span>
+          <span class="nh-h1-purple">Market</span>
+        </div>
+        <div class="nh-uline"></div>
+
+        <!-- Sub -->
+        <p class="nh-sub">
+          The <strong>FREE</strong> platform that teaches you to trade &amp; invest with confidence using
+          <span class="nh-sub-gold">real market strategies and expert-led live sessions</span> — for 2025 and beyond.
+        </p>
+
+        <!-- Checklist -->
+        <ul class="nh-checks">
+          <li class="nh-check" style="animation-delay:.42s">
+            <span class="nh-check-ico" style="animation-delay:.42s"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Learn stock market basics — <strong>Zero se Hero tak</strong>
+          </li>
+          <li class="nh-check" style="animation-delay:.54s">
+            <span class="nh-check-ico" style="animation-delay:.54s"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Master <strong>Technical Analysis, Options &amp; Risk Management</strong>
+          </li>
+          <li class="nh-check" style="animation-delay:.66s">
+            <span class="nh-check-ico" style="animation-delay:.66s"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Trade live with <strong>real-time setups &amp; entry-exit strategies</strong>
+          </li>
+          <li class="nh-check" style="animation-delay:.78s">
+            <span class="nh-check-ico" style="animation-delay:.78s"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Get premium resources worth <span class="nh-sub-gold"><strong>₹7,999 — FREE</strong></span> on enrolment
+          </li>
+        </ul>
+
+        <!-- Hosted by -->
+        <div class="nh-host">
+          <div class="nh-host-ava">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </div>
+          <div class="nh-host-info">
+            <span class="nh-host-by">Hosted by</span>
+            <span class="nh-host-name">Sarang Yadav</span>
+            <span class="nh-host-role">Founder — Boss of Stock Market</span>
+          </div>
         </div>
 
-        <!-- Bullets -->
-        <div class="bosw-hero-bullets">
-          <span class="bosw-hero-bullet">Learn</span>
-          <span class="bosw-hero-dot"></span>
-          <span class="bosw-hero-bullet">Analyze</span>
-          <span class="bosw-hero-dot"></span>
-          <span class="bosw-hero-bullet">Grow</span>
-          <span class="bosw-hero-dot"></span>
-          <span class="bosw-hero-bullet">Succeed</span>
-        </div>
+        <div class="nh-footnote">Learn • Analyze • Grow • Succeed &nbsp;|&nbsp; 850K+ Followers</div>
 
-        <!-- Tagline -->
-        <div class="bosw-hero-tagline">
-          The Stock Market Isn't Luck,&nbsp;<span class="bosw-hero-tagline-gold">It's Knowledge.</span>
-        </div>
-
-        <!-- Feature icons -->
-        <div class="bosw-hero-feats">
-          <div class="bosw-hero-feat" style="animation: bosFeaturePop 0.6s ease 1.1s both;">
-            <div class="bosw-hero-feat-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><path d="M8 7h8M8 11h5"/></svg>
-            </div>
-            <span class="bosw-hero-feat-lbl">Learn<span class="bosw-hero-feat-sub">From Basics to Advanced</span></span>
-          </div>
-          <div class="bosw-hero-feat" style="animation: bosFeaturePop 0.6s ease 1.25s both;">
-            <div class="bosw-hero-feat-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><polyline points="11 8 11 11 13 13"/></svg>
-            </div>
-            <span class="bosw-hero-feat-lbl">Analyze<span class="bosw-hero-feat-sub">Market Trends &amp; Opportunities</span></span>
-          </div>
-          <div class="bosw-hero-feat" style="animation: bosFeaturePop 0.6s ease 1.4s both;">
-            <div class="bosw-hero-feat-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/><polyline points="18 5 22 1 22 5"/></svg>
-            </div>
-            <span class="bosw-hero-feat-lbl">Grow<span class="bosw-hero-feat-sub">Build Wealth Step by Step</span></span>
-          </div>
-          <div class="bosw-hero-feat" style="animation: bosFeaturePop 0.6s ease 1.55s both;">
-            <div class="bosw-hero-feat-ico">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-            </div>
-            <span class="bosw-hero-feat-lbl">Succeed<span class="bosw-hero-feat-sub">Discipline Today, Freedom Tomorrow</span></span>
-          </div>
+        <!-- CTA -->
+        <div class="nh-cta-wrap">
+          <a class="nh-cta" href="#courses">
+            <svg class="nh-cta-icon-book" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+            </svg>
+            View Courses
+            <svg class="nh-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </a>
+          <span class="nh-cta-sub">3 courses available · Enroll today</span>
         </div>
 
       </div>
 
-      <!-- RIGHT IMAGE + PILL -->
-      <div class="bosw-hero-right">
-        <img
-          class="bosw-hero-person"
-          src="https://raw.githubusercontent.com/ecomaura/finearnmedia/refs/heads/main/Gemini_Generated_Image_q5zblsq5zblsq5zb_1_-removebg-preview.png"
-          alt="Sarang Yadav – Founder, Boss of Stock Market"
-        />
+      <!-- RIGHT -->
+      <div class="nh-right">
 
-        <!-- Founder Pill -->
-        <div class="bosw-hero-pill">
-          <div class="bosw-hero-pill-inner">
-            <div class="bosw-hero-pill-name">
-              <span class="bosw-letter" style="animation-delay:1.3s">S</span>
-              <span class="bosw-letter" style="animation-delay:1.38s">a</span>
-              <span class="bosw-letter" style="animation-delay:1.46s">r</span>
-              <span class="bosw-letter" style="animation-delay:1.54s">a</span>
-              <span class="bosw-letter" style="animation-delay:1.62s">n</span>
-              <span class="bosw-letter" style="animation-delay:1.70s">g</span>
-              <span class="bosw-space"></span>
-              <span class="bosw-letter" style="animation-delay:1.80s">Y</span>
-              <span class="bosw-letter" style="animation-delay:1.88s">a</span>
-              <span class="bosw-letter" style="animation-delay:1.96s">d</span>
-              <span class="bosw-letter" style="animation-delay:2.04s">a</span>
-              <span class="bosw-letter" style="animation-delay:2.12s">v</span>
+        <!-- Video -->
+        <div class="nh-video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/live_stream?channel=UCdjV3MnhtxZuf50SfHIw0xg&autoplay=0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            title="Boss of Stock – Live Session"
+          ></iframe>
+          <!-- Play overlay — clicking loads actual video -->
+          <div class="nh-play-overlay" id="nhPlayOverlay">
+            <div class="nh-play-btn">
+              <svg viewBox="0 0 24 24" fill="#000"><polygon points="5,3 19,12 5,21"/></svg>
             </div>
-            <div class="bosw-hero-pill-role">Founder – Boss of Stock Market</div>
-            <div class="bosw-hero-pill-divider"></div>
-            <div class="bosw-hero-pill-social">
-              <div class="bosw-hero-pill-soc bosw-hero-pill-soc--yt">
+            <span class="nh-play-label">Watch Free Preview</span>
+          </div>
+        </div>
+
+        <!-- Founder pill row below video -->
+        <div class="nh-pill-row">
+          <div class="nh-pill" style="animation-delay:.7s">
+            <div class="nh-pill-name">Sarang Yadav</div>
+            <div class="nh-pill-role">Founder — Boss of Stock</div>
+            <div class="nh-pill-divider"></div>
+            <div class="nh-pill-social">
+              <div class="nh-pill-soc nh-pill-soc--yt">
                 <svg viewBox="0 0 24 24"><path fill="#fff" d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
               </div>
-              <div class="bosw-hero-pill-soc bosw-hero-pill-soc--ig">
+              <div class="nh-pill-soc nh-pill-soc--ig">
                 <svg viewBox="0 0 24 24"><path fill="#fff" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               </div>
-              <div class="bosw-hero-pill-divv"></div>
-              <div class="bosw-hero-pill-follow">
-                <span class="bosw-hero-pill-flbl">Followers</span>
-                <span class="bosw-hero-pill-fnum">850K+</span>
+              <div class="nh-pill-divv"></div>
+              <div class="nh-pill-follow">
+                <span class="nh-pill-flbl">Followers</span>
+                <span class="nh-pill-fnum">850K+</span>
               </div>
             </div>
           </div>
         </div>
+
       </div>
 
     </div>
+
+    <script>
+      (function(){
+        var overlay = document.getElementById('nhPlayOverlay');
+        if(!overlay) return;
+        overlay.addEventListener('click', function(){
+          var wrap = overlay.parentNode;
+          var iframe = wrap.querySelector('iframe');
+          if(iframe){
+            iframe.src = 'https://www.youtube.com/embed/live_stream?channel=UCdjV3MnhtxZuf50SfHIw0xg&autoplay=1';
+          }
+          overlay.classList.add('hidden');
+        });
+      })();
+    </script>
+
   </div>
 
   <!-- BENEFITS -->
@@ -728,7 +677,7 @@
   </section>
 
   <!-- POPULAR COURSES -->
-  <section class="bosw-crs-sec">
+  <section class="bosw-crs-sec" id="courses">
     <div class="bosw-sec-hd">
       <div class="bosw-sec-line"></div>
       <div class="bosw-sec-ey">POPULAR COURSES</div>
