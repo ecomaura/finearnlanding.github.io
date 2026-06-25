@@ -222,7 +222,7 @@
       background:linear-gradient(135deg,rgba(15,10,42,.85),rgba(28,16,64,.75));
       cursor:pointer; transition:opacity .25s; z-index:3;
     }
-    .nh-play-overlay.hidden { opacity:0; pointer-events:none; }
+    .nh-play-overlay.hidden { opacity:0; pointer-events:none; display:none; }
     .nh-play-btn {
       width:68px; height:68px; border-radius:50%;
       background:#7C3AED;
@@ -546,7 +546,7 @@
         <!-- Video -->
         <div class="nh-video-wrap">
           <iframe
-            src="https://www.youtube.com/embed/8vpT2W9e_Q4"
+            src=" "
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
             title="Boss of Stock – Live Session"
@@ -602,7 +602,7 @@
           var wrap = overlay.parentNode;
           var iframe = wrap.querySelector('iframe');
           if(iframe){
-            iframe.src = 'https://www.youtube.com/watch?v=8vpT2W9e_Q4';
+            iframe.src = 'https://www.youtube.com/embed/8vpT2W9e_Q4?autoplay=1';
           }
           overlay.classList.add('hidden');
         });
