@@ -107,22 +107,23 @@
     .nh-sub-gold { color:#A78BFA; font-weight:600; }
 
     /* checklist */
-    .nh-checks { list-style:none; padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:12px; }
-    .nh-check {
-  display:flex; align-items:center; gap:10px; flex-wrap:nowrap;
-  font-size:clamp(12px,1.1vw,13.5px); color:#CBD5E1; line-height:1.55;
+    .nh-checks { padding:0; margin:0 0 24px; display:flex; flex-direction:column; gap:10px; }
+.nh-check {
+  display:grid;
+  grid-template-columns:22px 1fr;
+  gap:10px;
+  font-size:clamp(12px,1.1vw,13.5px); color:#CBD5E1; line-height:1.6;
   opacity:0; animation:nhFadeUp .5s ease both;
-  word-break:normal; overflow-wrap:anywhere;
 }
-    .nh-check strong { color:#FFFFFF; display:inline !important; font-weight:700; }
-    .nh-check strong, .nh-check b { display:inline !important; }
-    .nh-check-ico {
-      flex-shrink:0; width:20px; height:20px; border-radius:50%;
-      background:#7C3AED;
-      display:flex; align-items:center; justify-content:center; margin-top:1px;
-      animation:nhCheckPop .5s cubic-bezier(.22,1,.36,1) both;
-    }
-    .nh-check-ico svg { width:11px; height:11px; }
+.nh-check strong { color:#FFFFFF; font-weight:700; }
+.nh-check-ico {
+  width:20px; height:20px; border-radius:50%;
+  background:#7C3AED; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  margin-top:2px;
+  animation:nhCheckPop .5s cubic-bezier(.22,1,.36,1) both;
+}
+.nh-check-ico svg { width:11px; height:11px; }
 
     /* hosted by — matches bonus card style */
     .nh-host {
