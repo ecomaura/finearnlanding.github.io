@@ -112,8 +112,10 @@
   display:flex; align-items:center; gap:10px; flex-wrap:nowrap;
   font-size:clamp(12px,1.1vw,13.5px); color:#CBD5E1; line-height:1.55;
   opacity:0; animation:nhFadeUp .5s ease both;
+  word-break:normal; overflow-wrap:anywhere;
 }
-    .nh-check strong { color:#FFFFFF; }
+    .nh-check strong { color:#FFFFFF; display:inline !important; font-weight:700; }
+    .nh-check strong, .nh-check b { display:inline !important; }
     .nh-check-ico {
       flex-shrink:0; width:20px; height:20px; border-radius:50%;
       background:#7C3AED;
