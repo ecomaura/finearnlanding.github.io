@@ -537,14 +537,31 @@
   </div>
 </div>
         <!-- Countdown -->
-<div style="display:flex;align-items:center;gap:6px;background:#0F0A2A;border-radius:8px;padding:6px 12px;flex-shrink:0;">
-    <span style="font-size:11px;color:#64748B;font-weight:600;margin-right:4px;">Limited Offer</span>
-    <span style="font-size:16px;font-weight:900;color:#7C3AED;animation:nhPulse 1s ease-in-out infinite;">⏳</span>
-    <span style="font-size:16px;font-weight:900;color:#F59E0B;letter-spacing:1px;">BOSS20</span>
+<div style="display:flex;align-items:center;gap:10px;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.45);border-radius:12px;padding:10px 16px;width:fit-content;margin-bottom:14px;flex-wrap:wrap;">
+  <span style="font-size:13px;color:#FFFFFF;font-weight:700;white-space:nowrap;">🎁 Get 20% Instant Discount — Use PromoCode: <span style="color:#A78BFA;font-weight:900;">BOSS20</span></span>
+  <div style="display:flex;align-items:center;gap:6px;background:#0F0A2A;border-radius:8px;padding:6px 12px;flex-shrink:0;">
+    <span style="font-size:11px;color:#64748B;font-weight:600;margin-right:4px;">Expires in:</span>
+    <span id="cdM" style="font-size:16px;font-weight:900;color:#7C3AED;min-width:22px;text-align:center;">05</span>
+    <span style="font-size:14px;color:#475569;font-weight:700;">:</span>
+    <span id="cdS" style="font-size:16px;font-weight:900;color:#7C3AED;min-width:22px;text-align:center;">00</span>
   </div>
 </div>
 
-
+<script>
+window.addEventListener('load', function(){
+  var m = 4, s = 59;
+  var mEl = document.getElementById('cdM');
+  var sEl = document.getElementById('cdS');
+  if(!mEl || !sEl) return;
+  setInterval(function(){
+    s--;
+    if(s < 0){ s = 59; m--; }
+    if(m < 0){ m = 4; s = 59; }
+    mEl.textContent = m < 10 ? '0'+m : ''+m;
+    sEl.textContent = s < 10 ? '0'+s : ''+s;
+  }, 1000);
+});
+</script>
 
 <!-- CTA -->
         <div class="nh-cta-wrap">
