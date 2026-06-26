@@ -548,17 +548,19 @@
 </div>
 
 <script>
-(function(){
-  var m = 5, s = 0;
+window.addEventListener('load', function(){
+  var m = 4, s = 59;
   var mEl = document.getElementById('cdM');
   var sEl = document.getElementById('cdS');
-  var t = setInterval(function(){
-    if(s === 0){ if(m === 0){ m=5; s=0; } else { m--; s=59; } }
-    else { s--; }
-    mEl.textContent = m < 10 ? '0'+m : m;
-    sEl.textContent = s < 10 ? '0'+s : s;
+  if(!mEl || !sEl) return;
+  setInterval(function(){
+    s--;
+    if(s < 0){ s = 59; m--; }
+    if(m < 0){ m = 4; s = 59; }
+    mEl.textContent = m < 10 ? '0'+m : ''+m;
+    sEl.textContent = s < 10 ? '0'+s : ''+s;
   }, 1000);
-})();
+});
 </script>
 
 <!-- CTA -->
