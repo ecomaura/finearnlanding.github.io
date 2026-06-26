@@ -55,6 +55,10 @@
     /* ── LEFT ── */
     .nh-left { flex:1 1 0; min-width:0; display:flex; flex-direction:column; }
 
+@media (max-width:600px) {
+  .nh-left { padding:0 4px; }
+}
+
     /* badge */
     .nh-badge {
       display:inline-flex; align-items:center; gap:8px;
@@ -272,7 +276,7 @@
       .nh-h1    { font-size:clamp(2rem,7vw,3.4rem); }
     }
     @media (max-width:600px) {
-      .nh-inner { padding:28px 5% 28px; gap:24px; }
+      .nh-inner { padding:28px 6% 28px; gap:24px; }
       .nh-logo img { height:40px; }
       .nh-h1    { font-size:clamp(1.8rem,8.5vw,2.8rem); }
       .nh-pill-row { flex-direction:column; }
